@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Button, Vibrate } from 'react-native';
+import { StyleSheet, View, Text, Button, Vibration } from 'react-native';
 import * as Haptics from 'expo-haptics';
 
 export default function App() {
@@ -7,7 +7,7 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.text}>Haptics.selectionAsync</Text>
       <View style={styles.buttonContainer}>
-        <Button title="Selection" onPress={() => Vibrate.vibrate(100)} />
+        <Button title="Selection" onPress={() => Vibration.vibrate(100)} />
       </View>
       <Text style={styles.text}>Haptics.notificationAsync</Text>
       <View style={styles.buttonContainer}>
