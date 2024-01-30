@@ -1,13 +1,55 @@
-import * as React from 'react';
+import { useState, useEffect} from 'react';
 import { StyleSheet, View, Text, Button, Vibration } from 'react-native';
 import * as Haptics from 'expo-haptics';
+import { Audio } from 'expo-av';
 
 export default function App() {
+  const [sound, setSound] = useState();
+
+  async function playSound() {
+    console.log('Loading Sound');
+    const { sound } = await Audio.Sound.createAsync( require('./assets/alarm.mp3')
+    );
+    setSound(sound);
+
+    console.log('Playing Sound');
+    await sound.playAsync();
+  }
+
+  useEffect(() => {
+
+    async function configAudio() {
+      await Audio.setAudioModeAsync({
+        allowsRecordingIOS: false,
+        staysActiveInBackground: true,
+        interruptionModeIOS: InterruptionModeIOS.DuckOthers,
+        playsInSilentModeIOS: true,
+        shouldDuckAndroid: true,
+        interruptionModeAndroid: InterruptionModeAndroid.DuckOthers,
+        playThroughEarpieceAndroid: false
+      });
+    }
+    configAudio();
+    
+  })
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          console.log('Unloading Sound');
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
+
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Haptics.selectionAsync</Text>
       <View style={styles.buttonContainer}>
         <Button title="Selection" onPress={() => Vibration.vibrate(100)} />
+        <Button title="Sound" onPress={() => playSound()} />
       </View>
       <Text style={styles.text}>Haptics.notificationAsync</Text>
       <View style={styles.buttonContainer}>
