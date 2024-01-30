@@ -17,25 +17,12 @@ export default function App() {
   }
 
   useEffect(() => {
-    Audio.setAudioModeAsync({staysActiveInBackground: true})
-  }, []);
-
-  useEffect(() => {
-
-    async function configAudio() {
-      await Audio.setAudioModeAsync({
-        allowsRecordingIOS: false,
-        staysActiveInBackground: true,
-        interruptionModeIOS: InterruptionModeIOS.DuckOthers,
-        playsInSilentModeIOS: true,
-        shouldDuckAndroid: true,
-        interruptionModeAndroid: InterruptionModeAndroid.DuckOthers,
-        playThroughEarpieceAndroid: false
-      });
-    }
-    configAudio();
-    
-  })
+    Audio.setAudioModeAsync({
+      allowsRecordingIOS: false,
+      staysActiveInBackground: true,
+      playsInSilentModeIOS: true,
+    })
+  },);
 
   useEffect(() => {
     return sound
