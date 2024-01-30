@@ -17,6 +17,10 @@ export default function App() {
   }
 
   useEffect(() => {
+    Audio.setAudioModeAsync({staysActiveInBackground: true})
+  }, []);
+
+  useEffect(() => {
 
     async function configAudio() {
       await Audio.setAudioModeAsync({
