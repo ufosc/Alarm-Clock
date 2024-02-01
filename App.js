@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
+import AlarmClock from './Alarm';
 
 
 
@@ -21,9 +22,10 @@ export default function App() {
 
   return (
     <ScrollView style={styles.container}>
+      <AlarmClock style={{marginTop: 100, padding: 100, paddingTop: 100 }}/>
 
 
-      <Text style={{ ...textStyles.titleText, padding: 20, paddingTop: 100 }}>Alarm Clock</Text>
+      <Text style={{ ...textStyles.titleText, padding: 20, paddingTop: 100 }}>Alarm Clockkk</Text>
       <View style={styles.box}>
 
         <Text style={styles.time}>{currentTime.toLocaleTimeString()}</Text>
@@ -48,7 +50,8 @@ const styles = StyleSheet.create({
     padding: 20,
     // alignItems: 'center',
     // justifyContent: 'center',
-    paddingBottom: 500
+    paddingBottom: 500,
+    marginTop: 100
   },
   button: {
     backgroundColor: 'lightgreen',
