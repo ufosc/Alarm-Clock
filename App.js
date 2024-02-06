@@ -3,9 +3,6 @@ import { StyleSheet, Text, ScrollView, TouchableOpacity, View } from 'react-nati
 import React, { useState, useEffect } from 'react';
 import AlarmClock from './Alarm';
 
-
-
-
 export default function App() {
 
   const [showWow, setShowWow] = useState(false);
@@ -25,7 +22,7 @@ export default function App() {
       <AlarmClock style={{marginTop: 100, padding: 100, paddingTop: 100 }}/>
 
 
-      <Text style={{ ...textStyles.titleText, padding: 20, paddingTop: 100 }}>Alarm Clockkk</Text>
+      <Text style={{ ...textStyles.titleText, padding: 20, paddingTop: 100 }}>Alarm Clock</Text>
       <View style={styles.box}>
 
         <Text style={styles.time}>{currentTime.toLocaleTimeString()}</Text>
@@ -43,7 +40,7 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -83,7 +80,7 @@ const styles = StyleSheet.create({
 
 });
 
-const textStyles = StyleSheet.create({
+export const textStyles = StyleSheet.create({
   baseText: {
     fontFamily: 'Cochin',
   },
