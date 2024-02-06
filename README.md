@@ -11,7 +11,7 @@ UF Alarm Clock Project.
 ## Running the app
 
 - Install the "Expo Go" app on your phone
-- Clone the repo using the terminal command "git clone https://github.com/ufosc" in the desired location
+- Clone the repo using the terminal command "git clone https://github.com/ufosc/Alarm-Clock.git" in the desired location
 - In the Alarm-Clock folder created, run "npm i" to install packages
 - Then, run "npm run start"
   - Make sure you have node installed: https://nodejs.org/en/download
