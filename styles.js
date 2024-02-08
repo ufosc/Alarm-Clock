@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
       // alignItems: 'center',
       // justifyContent: 'center',
       paddingBottom: 500,
-      marginTop: 100
+      marginTop: 20
     },
     button: {
       backgroundColor: 'lightgreen',
@@ -28,6 +28,17 @@ const styles = StyleSheet.create({
       borderColor: "green",
       alignItems: "center"
     },
+    alarmTimeBox: {
+        // width: 300,
+        // height: 100,
+        backgroundColor: 'white',
+        padding: 10,
+        // margin: 10,
+        borderRadius: 700,
+        borderWidth: 2,
+        borderColor: "green",
+        alignItems: "center"
+      },
     time:
     {
       // padding: 80,
@@ -52,7 +63,11 @@ const textStyles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     textAlign: 'center',
-  }
+  },
+  timeText: {
+    alignSelf: 'flex-start', 
+    fontSize: 30,  
+    fontWeight: 'bold',}
 });
 
 export { styles, textStyles };
