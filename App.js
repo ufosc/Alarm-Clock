@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import AlarmClock from './Alarm';
+import AlarmClock from './screens/Alarm';
 import { styles, textStyles } from './styles';  // Adjust the path as needed
 
 
