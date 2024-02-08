@@ -21,7 +21,6 @@ export default function App() {
 
   return (
     <ScrollView style={styles.container}>
-      <AlarmClock style={{marginTop: 100, padding: 100, paddingTop: 100 }}/>
 
 
       <Text style={{ ...textStyles.titleText, padding: 20, paddingTop: 100 }}>Alarm Clock</Text>
@@ -32,10 +31,15 @@ export default function App() {
       <TouchableOpacity onPress={() => setShowWow(!showWow)} style={styles.button}>
         <Text style={textStyles.buttonText}>Button</Text>
       </TouchableOpacity>
+    
 
       {showWow && (
         <Text style={{ padding: 40 }}>Wow it actually works!</Text>
       )}
+
+
+<AlarmClock style={{marginTop: 100, padding: 100, paddingTop: 100 }}/>
+
 
       <StatusBar style="auto" />
     </ScrollView>
