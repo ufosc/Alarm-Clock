@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import AlarmClock from './Alarm';
+import { styles, textStyles } from './styles';  // Adjust the path as needed
+
 
 export default function App() {
 
@@ -39,58 +41,3 @@ export default function App() {
     </ScrollView>
   );
 }
-
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    padding: 20,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    paddingBottom: 500,
-    marginTop: 100
-  },
-  button: {
-    backgroundColor: 'lightgreen',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 5,
-    marginBottom: 50
-  },
-  box: {
-    width: 300,
-    height: 100,
-    backgroundColor: 'white',
-    padding: 30,
-    margin: 10,
-    borderRadius: 700,
-    borderWidth: 2,
-    borderColor: "green",
-    alignItems: "center"
-  },
-  time:
-  {
-    // padding: 80,
-    fontWeight: "bold",
-    fontSize: 30,
-    color: "green"
-
-
-  }
-
-});
-
-export const textStyles = StyleSheet.create({
-  baseText: {
-    fontFamily: 'Cochin',
-  },
-  titleText: {
-    fontSize: 50,
-    fontWeight: 'bold',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 20,
-    textAlign: 'center',
-  }
-});
