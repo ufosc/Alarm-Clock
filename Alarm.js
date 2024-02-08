@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import {textStyles, styles} from "./App";
+import {textStyles, styles} from "./styles";
 
 const AlarmClock = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -66,12 +66,4 @@ const AlarmClock = () => {
   );
 };
 
-const App = () => {
-  return (
-    <View style={{ flex: 1, marginTop: 100, padding: 100, paddingTop: 100 }}>
-      <AlarmClock />
-    </View>
-  );
-};
-
-export default App;
+export default AlarmClock;
