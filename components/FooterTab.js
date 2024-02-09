@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import {textStyles, styles} from "../styles/styles";
+import { textStyles, styles } from '../styles/styles';
 
-const FooterTab = () => {
-  return(
+function FooterTab() {
+  return (
     <View style={styles.tab}>
       <TouchableOpacity>
         <Text style={textStyles.buttonText}>Clock</Text>
@@ -15,7 +15,7 @@ const FooterTab = () => {
         <Text style={textStyles.buttonText}>Settings</Text>
       </TouchableOpacity>
     </View>
-  )
+  );
 }
 
 export default FooterTab;

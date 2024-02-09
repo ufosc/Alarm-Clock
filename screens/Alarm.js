@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import {textStyles, styles} from "../styles/styles";
+import { textStyles, styles } from '../styles/styles';
 
-const AlarmClock = () => {
+function AlarmClock() {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [alarmTime, setAlarmTime] = useState(null);
   const [isAlarmSet, setIsAlarmSet] = useState(false);
@@ -38,9 +38,9 @@ const AlarmClock = () => {
         setCountdown('');
       } else {
         const minutes = Math.floor(remainingTime / 60000);
-        const formatMinutes = String (minutes).padStart(2, '0');
+        const formatMinutes = String(minutes).padStart(2, '0');
         const seconds = Math.floor((remainingTime % 60000) / 1000);
-        const formatSeconds = String (seconds).padStart(2, '0');
+        const formatSeconds = String(seconds).padStart(2, '0');
         setCountdown(`${formatMinutes} min : ${formatSeconds} sec`);
       }
     }, 1000);
@@ -52,7 +52,7 @@ const AlarmClock = () => {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Alarm Status: {isAlarmSet ? 'Set' : 'Not Set'}</Text>
       {isAlarmSet && <Text>Time Left: {countdown}</Text>}
-      <TouchableOpacity onPress={showDatePicker} style={styles.button}> 
+      <TouchableOpacity onPress={showDatePicker} style={styles.button}>
         <Text style={textStyles.buttonText}>Set Alarm Time</Text>
       </TouchableOpacity>
 
@@ -65,6 +65,6 @@ const AlarmClock = () => {
       />
     </View>
   );
-};
+}
 
 export default AlarmClock;

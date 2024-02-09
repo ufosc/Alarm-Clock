@@ -8,14 +8,14 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
     paddingBottom: 500,
-    marginTop: 20
+    marginTop: 20,
   },
   button: {
     backgroundColor: 'lightgreen',
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 5,
-    marginBottom: 50
+    marginBottom: 50,
   },
   box: {
     width: 300,
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 700,
     borderWidth: 2,
-    borderColor: "green",
-    alignItems: "center"
+    borderColor: 'green',
+    alignItems: 'center',
   },
   alarmTimeBox: {
     // width: 300,
@@ -36,31 +36,28 @@ const styles = StyleSheet.create({
     // margin: 10,
     borderRadius: 700,
     borderWidth: 2,
-    borderColor: "green",
-    alignItems: "center"
+    borderColor: 'green',
+    alignItems: 'center',
   },
-  time:
-  {
+  time: {
     // padding: 80,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 30,
-    color: "green"
-
-
+    color: 'green',
   },
   tab: {
     backgroundColor: 'gray',
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 20,
-    paddingBottom: 40
-    },
+    paddingBottom: 40,
+  },
   page: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-  }
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
 });
 
 const textStyles = StyleSheet.create({
@@ -80,7 +77,7 @@ const textStyles = StyleSheet.create({
     alignSelf: 'flex-start',
     fontSize: 30,
     fontWeight: 'bold',
-  }
+  },
 });
 
 export { styles, textStyles };
