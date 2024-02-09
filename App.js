@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View, Button } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import AlarmClock from './screens/Alarm';
+import FooterTab from './components/FooterTab';
 import HomeScreen from './screens/Home';
 import Setting from './screens/Setting';
 import { NavigationContainer } from '@react-navigation/native';
