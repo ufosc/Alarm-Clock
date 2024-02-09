@@ -29,11 +29,6 @@ export default function Home() {
         <Text style={styles.time}>{currentTime.toLocaleTimeString()}</Text>
       </View>
 
-      <TouchableOpacity onPress={() => setShowWow(!showWow)} style={styles.button}>
-        <Text style={textStyles.buttonText}>Button</Text>
-      </TouchableOpacity>
-      {showWow && <Text style={{ padding: 40 }}>Wow it actually farts!</Text>}
-
       <AlarmClock style={{ marginTop: 100, padding: 100, paddingTop: 100 }} />
       <TouchableOpacity onPress={() => navigation.navigate('Setting')} style={styles.button}>
         <Text style={textStyles.buttonText}>Go to Settings</Text>
