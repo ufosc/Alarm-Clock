@@ -57,6 +57,7 @@ const AlarmClock = () => {
       </TouchableOpacity>
 
       <DateTimePickerModal
+        textColor="black"
         isVisible={isDatePickerVisible}
         mode="time"
         onConfirm={handleConfirm}
