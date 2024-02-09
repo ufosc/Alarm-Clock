@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import AlarmClock from './Alarm';
 import { styles, textStyles } from '../styles';  // Adjust the path as needed
 import { useNavigation } from '@react-navigation/native';
+import FooterTab from '../components/FooterTab';
 
 
 export default function Home() {
@@ -47,6 +48,7 @@ export default function Home() {
 
 
       <StatusBar style="auto" />
+      <FooterTab />
     </ScrollView>
   );
 }
