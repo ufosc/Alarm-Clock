@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, ScrollView, TouchableOpacity, View } from 'react-native';
+import { Text, ScrollView, TouchableOpacity, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import AlarmClock from './Alarm';
@@ -9,7 +9,6 @@ import FooterTab from '../components/FooterTab';
 export default function Home() {
   const navigation = useNavigation();
 
-  const [showWow, setShowWow] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export default function Home() {
         <Text style={textStyles.buttonText}>Go to Settings</Text>
       </TouchableOpacity>
 
-      <StatusBar style="auto" />
+      <StatusBar />
       <FooterTab />
     </ScrollView>
   );
