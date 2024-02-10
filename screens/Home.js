@@ -29,9 +29,6 @@ export default function Home() {
       </View>
 
       <AlarmClock style={{ marginTop: 100, padding: 100, paddingTop: 100 }} />
-      <TouchableOpacity onPress={() => navigation.navigate('Setting')} style={styles.button}>
-        <Text style={textStyles.buttonText}>Go to Settings</Text>
-      </TouchableOpacity>
 
       <StatusBar />
       <FooterTab />
