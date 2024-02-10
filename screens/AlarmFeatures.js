@@ -6,15 +6,12 @@ import FooterTab from '../components/FooterTab';
 
 
 
-function Setting() {
-  const [toggle, setToggle] = useState(false);
+function AlarmFeatures() {
 
-  const toggleSwitch = () => setToggle((previousState) => !previousState);
 
   return (
     <View style={styles.container}>
-      <Text style={textStyles.titleText}>Settings</Text>
-      <Switch onValueChange={toggleSwitch} value={toggle} />
+      <Text style={textStyles.titleText}>Alarm Features</Text>
 
       <StatusBar />
       <FooterTab />
@@ -22,4 +19,4 @@ function Setting() {
   );
 }
 
-export default Setting;
+export default AlarmFeatures;
