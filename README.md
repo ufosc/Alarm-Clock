@@ -1,53 +1,53 @@
-# Alarm Clock
-<br/> 
-
-UF Alarm Clock Project.
+# UF Alarm Clock
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)  ![GitHub issues](https://img.shields.io/github/issues/ufosc/VisualNovel)  ![GitHub](https://img.shields.io/github/license/ufosc/VisualNovel) 
+<br/>
+We are creating an alarm clock that punishes you for not waking up.
 
 ## Table of Contents
-- [Alarm Clock](#alarm-clock)
-
-## Installaltion
-
-## Running the app
-
-- Install the "Expo Go" app on your phone
-- Clone the repo using the terminal command "git clone https://github.com/ufosc/Alarm-Clock.git" in the desired location
-- In the Alarm-Clock folder created, run "npm i" to install packages
-- Then, run "npm run start"
-  - Make sure you have node installed: https://nodejs.org/en/download
-- Scan the resulting QR code with the Expo Go app
-  - If this does not work, try creating the code with "npm run tunnel" instead
+- [UF Alarm Clock](#uf-alarm-clock)
+  - [Table of Contents](#table-of-contents)
+  - [Maintainers](#maintainers)
+  - [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+  - [Resources](#resources)
+  - [Contributing](#contributing)
  
-## Contributing
-To contribute to this repository, please follow the following steps:
-
-1. Fork this project by going to the top-right corner of the page and clicking **Fork**.
-2. Clone your Forked repository to your local machine in your desired folder. 
-  `git clone <your-forked-repository>`
-3. Create your feature branch to work on changes.
-  `git checkout -b <your-feature-branch-name>`
-4. Commit your changes to your feature branch.
-  `git add <name-of-changed-file>`
-  `git commit -m "<your-message>"`
-5. For your first push to the new branch use the following:
-  `git push --set-upstream origin <your-feature-branch-name>`
-   Otherwise to push to current branch use the following:
-  `git push`
-6. Open a pull request to the original repository.
-
-## Resources
-For more help use the following links:
-- [Fork and Clone repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
-- [Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
-- [Comitting to Repository](https://www.atlassian.com/git/tutorials/saving-changes/git-commit#:~:text=Commits%20can%20be%20thought%20of,committed%20to%20the%20local%20repository.)
-- [Pushing to Repository](https://github.com/git-guides/git-push)
-- [Opening Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
-
-## Maintainers 
-
-Maintained by the UF Open Source Club
+## Maintainers
+Maintained by the UF Open Source Club, can be contacted via [Discord](https://discord.gg/j9g5dqSVD8)
 
 Current Maintainers: 
-* Max
-* Kaniel
+- Kaniel Vicencio @kanielv
+- Max Meiler @MaximilianMeiler
+## Installation
+This project requires [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com). Also, make sure you have `build-essential` (Linux) or `xcode-select` (MacOS).
 
+```
+sudo apt install build-essential
+// or...
+xcode-select --install
+```
+
+Next, begin by cloning the repository:
+```
+### Setup
+First fork the repository through github, then clone the fork using the git commands listed below.
+
+SSH
+        
+        git clone git@github.com:user/Alarm-Clock.git 
+
+HTTP
+
+        git clone https://github.com/user/Alarm-Clcok.git
+
+
+
+## Resources
+Here are some additional resources for using and contributing to the project:
+
+- [Bytes of Love Documentation](https://docs.google.com/document/d/1UAgixK7u0OdSegyYB6ZlITFe23ok7GV4MDUKGovdals/edit?usp=sharing)
+- [Ren'py Cheat Sheet](https://docs.google.com/document/d/15tTWFoevrGnxqZxlg1_bZifPYbWIxpm_45jp-FGTpGA/edit)
+- [Ren'Py Documenation](https://www.renpy.org/doc/html/index.html)
+- [Mood Board](https://www.figma.com/file/71HjcR1MImeYLqvirhFNO9/MOOD-BOARD-ANIME-GAME?type=design&node-id=0%3A1&mode=design&t=lBhCu8ZOLgnEFp4m-1)
+- [Miro Board](https://miro.com/welcomeonboard/QnRybW9VRlpCQU5nT3R4UGIxejlrRG12ZzdDalFlM01RN2R6MHFlclg0RmRaUzI0UmhZdXBMREZCUGRVU215eXwzNDU4NzY0NTE3ODI5MjgwMjEwfDI=?share_link_id=384176755076)
