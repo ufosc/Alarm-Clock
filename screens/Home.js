@@ -6,7 +6,7 @@ import AlarmClock from './Alarm';
 import { styles, textStyles } from '../styles/styles'; // Adjust the path as needed
 import FooterTab from '../components/FooterTab';
 
-export default function Home() {
+export default function Home({ isDarkMode }) { // Accept isDarkMode as a prop
   const navigation = useNavigation();
 
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -20,12 +20,20 @@ export default function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
-  return (
-    <ScrollView style={styles.container}>
-      <Text style={{ ...textStyles.titleText, padding: 20, paddingTop: 100 }}>Alarm Clock</Text>
+  // Define dynamic styles based on isDarkMode
+  const dynamicStyles = {
+    backgroundColor: isDarkMode ? 'darkgrey' : 'white',
+    color: isDarkMode ? 'white' : 'black',
+  };
 
-      <View style={styles.box}>
-        <Text style={styles.time}>{currentTime.toLocaleTimeString()}</Text>
+  return (
+    <ScrollView style={[styles.container, { backgroundColor: dynamicStyles.backgroundColor }]}>
+      <Text style={{ ...textStyles.titleText, padding: 20, paddingTop: 100, color: dynamicStyles.color }}>
+        Alarm Clock
+      </Text>
+
+      <View style={[styles.box, { backgroundColor: dynamicStyles.backgroundColor }]}>
+        <Text style={{ ...styles.time, color: dynamicStyles.color }}>{currentTime.toLocaleTimeString()}</Text>
       </View>
 
       <AlarmClock style={{ marginTop: 100, padding: 100, paddingTop: 100 }} />
