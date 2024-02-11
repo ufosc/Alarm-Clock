@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, Switch } from 'react-native';
-import { styles, textStyles } from '../styles/styles'; // Adjust the path as needed
+import { styles, textStyles } from '../styles/styles';
 import { StatusBar } from 'expo-status-bar';
 import FooterTab from '../components/FooterTab';
 
-
-
-function Setting() {
-  const [toggle, setToggle] = useState(false);
-
-  const toggleSwitch = () => setToggle((previousState) => !previousState);
+function Setting({ isDarkMode, toggleSwitch }) { // Receives isDarkMode and toggleSwitch as props
+  const backgroundColor = isDarkMode ? 'darkgrey' : 'white';
+  const textColor = isDarkMode ? 'white' : 'black';
 
   return (
-    <View style={styles.container}>
-      <Text style={textStyles.titleText}>Settings</Text>
-      <Switch onValueChange={toggleSwitch} value={toggle} />
+    <View style={[styles.container, { backgroundColor }]}>
+      <Text style={[textStyles.titleText, { color: textColor }]}>Settings</Text>
+      <Switch onValueChange={toggleSwitch} value={isDarkMode} />
 
       <StatusBar />
       <FooterTab />
