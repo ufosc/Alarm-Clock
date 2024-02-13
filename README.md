@@ -1,6 +1,6 @@
 # UF Alarm Clock
 <br/>
-Waking up is serious business.
+UF Alarm Clock Project.
 
 ## Table of Contents
 - [UF Alarm Clock](#uf-alarm-clock)
