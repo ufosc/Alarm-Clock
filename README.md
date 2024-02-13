@@ -1,5 +1,4 @@
 # UF Alarm Clock
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)  ![GitHub issues](https://img.shields.io/github/issues/ufosc/VisualNovel)  ![GitHub](https://img.shields.io/github/license/ufosc/VisualNovel) 
 <br/>
 Waking up is serious business.
 
