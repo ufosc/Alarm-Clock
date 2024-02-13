@@ -30,9 +30,14 @@ cd Alarm-Clock
 npm install
 ```
 
-Finally, run the following command:
+If your phone is on the same network as your computer run:
 ```
-npm start
+npm run start
+```
+
+If your phone is on a different network than your computer run:
+```
+npm run tunnel
 ```
 Then scan the QR code that appears on the expo go app.
 
