@@ -1,9 +1,9 @@
 # UF Alarm Clock
-![GitHub last commit](https://img.shields.io/github/last-commit/malangadan/Alarm-Clock)
-![GitHub issues](https://img.shields.io/github/issues/malangadan/Alarm-Clock)
-![GitHub forks](https://img.shields.io/github/forks/malangadan/Alarm-Clock)
-![GitHub stars](https://img.shields.io/github/stars/malangadan/Alarm-Clock)
-![GitHub license](https://img.shields.io/github/license/malangadan/Alarm-Clock)
+![GitHub last commit](https://img.shields.io/github/last-commit/ufosc/Alarm-Clock)
+![GitHub issues](https://img.shields.io/github/issues/ufosc/Alarm-Clock)
+![GitHub forks](https://img.shields.io/github/forks/ufosc/Alarm-Clock)
+![GitHub stars](https://img.shields.io/github/stars/ufosc/Alarm-Clock)
+![GitHub license](https://img.shields.io/github/license/ufosc/Alarm-Clock)
 ![NodeJS](https://img.shields.io/badge/node-%3E%3D%2012.0.0-brightgreen)
 ![npm](https://img.shields.io/npm/v/npm)
 
