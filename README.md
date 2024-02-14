@@ -13,6 +13,7 @@ UF Alarm Clock Project.
 ## Installation
 This project requires [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com). Also, the [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&gl=US) app is required on a mobile device. Make sure you have `build-essential` (Linux) or `xcode-select` (MacOS).
 
+
 ```
 sudo apt install build-essential
 // or...
@@ -75,5 +76,4 @@ Maintained by the UF Open Source Club, can be contacted via [Discord](https://di
 Current Maintainers: 
 - Kaniel Vicencio @kanielv
 - Max Meiler @MaximilianMeiler
-
 
