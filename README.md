@@ -1,24 +1,46 @@
-# Alarm Clock
-
+# UF Alarm Clock
 <br/>
-
 UF Alarm Clock Project.
 
 ## Table of Contents
+- [UF Alarm Clock](#uf-alarm-clock)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [Resources](#resources)
+- [Maintainers](#maintainers)
+ 
+## Installation
+This project requires [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com). Also, the [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&gl=US) app is required on a mobile device. Make sure you have `build-essential` (Linux) or `xcode-select` (MacOS).
 
-- [Alarm Clock](#alarm-clock)
 
-## Installaltion
+```
+sudo apt install build-essential
+// or...
+xcode-select --install
+```
 
-## Running the app
+Then, begin by cloning the repository:
+```
+git clone https://github.com/malangadan/Alarm-Clock.git
+```
 
-- Install the "Expo Go" app on your phone
-- Clone the repo using the terminal command "git clone https://github.com/ufosc/Alarm-Clock.git" in the desired location
-- In the Alarm-Clock folder created, run "npm i" to install packages
-- Then, run "npm run start"
-  - Make sure you have node installed: https://nodejs.org/en/download
-- Scan the resulting QR code with the Expo Go app
-  - If this does not work, try creating the code with "npm run tunnel" instead
+Navigate to the project directory and install the project dependencies:
+```
+cd Alarm-Clock
+npm install
+```
+
+If your phone is on the same network as your computer run:
+```
+npm run start
+```
+
+If your phone is on a different network than your computer run:
+```
+npm run tunnel
+```
+Then scan the QR code that appears on the expo go app.
 
 ## Contributing
 
@@ -47,12 +69,11 @@ For more help use the following links:
 - [Comitting to Repository](https://www.atlassian.com/git/tutorials/saving-changes/git-commit#:~:text=Commits%20can%20be%20thought%20of,committed%20to%20the%20local%20repository.)
 - [Pushing to Repository](https://github.com/git-guides/git-push)
 - [Opening Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
-
+  
 ## Maintainers
+Maintained by the UF Open Source Club, can be contacted via [Discord](https://discord.gg/j9g5dqSVD8)
 
-Maintained by the UF Open Source Club
+Current Maintainers: 
+- Kaniel Vicencio @kanielv
+- Max Meiler @MaximilianMeiler
 
-Current Maintainers:
-
-- Max
-- Kaniel
