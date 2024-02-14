@@ -1,6 +1,11 @@
 # UF Alarm Clock
-<br/>
-UF Alarm Clock Project.
+![GitHub last commit](https://img.shields.io/github/last-commit/malangadan/Alarm-Clock)
+![GitHub issues](https://img.shields.io/github/issues/malangadan/Alarm-Clock)
+![GitHub forks](https://img.shields.io/github/forks/malangadan/Alarm-Clock)
+![GitHub stars](https://img.shields.io/github/stars/malangadan/Alarm-Clock)
+![GitHub license](https://img.shields.io/github/license/malangadan/Alarm-Clock)
+![NodeJS](https://img.shields.io/badge/node-%3E%3D%2012.0.0-brightgreen)
+![npm](https://img.shields.io/npm/v/npm)
 
 ## Table of Contents
 - [UF Alarm Clock](#uf-alarm-clock)
@@ -9,7 +14,7 @@ UF Alarm Clock Project.
 - [Contributing](#contributing)
 - [Resources](#resources)
 - [Maintainers](#maintainers)
- 
+
 ## Installation
 This project requires [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com). Also, the [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&gl=US) app is required on a mobile device. Make sure you have `build-essential` (Linux) or `xcode-select` (MacOS).
 
