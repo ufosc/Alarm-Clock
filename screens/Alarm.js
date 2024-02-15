@@ -10,6 +10,10 @@ function AlarmClock() {
   const [countdown, setCountdown] = useState('');
   const [isAlarmOn, setIsAlarmOn] = useState(true);
 
+  // multiple alarms
+  const [alarms, setAlarms] = useState(null);
+
+
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -17,6 +21,16 @@ function AlarmClock() {
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
   };
+
+
+
+
+
+
+
+  
+
+
 
   const handleConfirm = (date) => {
     setAlarmTime(date);
@@ -51,8 +65,8 @@ function AlarmClock() {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Alarm Status: {isAlarmSet ? 'Set' : 'Not Set'}</Text>
-      {isAlarmSet && <Text>Time Left: {countdown}</Text>}
+      {/* <Text>Alarm Status: {isAlarmSet ? 'Set' : 'Not Set'}</Text> */}
+      {/* {isAlarmSet && <Text>Time Left: {countdown}</Text>} */}
       <TouchableOpacity onPress={showDatePicker} style={styles.button}>
         <Text style={textStyles.buttonText}>Set Alarm Time</Text>
       </TouchableOpacity>
@@ -61,6 +75,7 @@ function AlarmClock() {
         textColor="black"
         isVisible={isDatePickerVisible}
         mode="time"
+        date={new Date()}
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
       />
