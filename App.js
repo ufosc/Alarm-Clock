@@ -1,43 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, ScrollView, TouchableOpacity, View } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import AlarmClock from './screens/Alarm';
-import { styles, textStyles } from './styles';  // Adjust the path as needed
+import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/Home';
+import Setting from './screens/Setting';
+import AlarmFeatures from './screens/AlarmFeatures';
 
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const [showWow, setShowWow] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000); // Update every second
-
-    // Cleanup interval on component unmount
-    return () => clearInterval(intervalId);
-  }, []);
+  const toggleSwitch = () => setIsDarkMode(!isDarkMode);
 
   return (
-    <ScrollView style={styles.container}>
-      <AlarmClock style={{marginTop: 100, padding: 100, paddingTop: 100 }}/>
-
-
-      <Text style={{ ...textStyles.titleText, padding: 20, paddingTop: 100 }}>Alarm Clock</Text>
-      <View style={styles.box}>
-
-        <Text style={styles.time}>{currentTime.toLocaleTimeString()}</Text>
-      </View>
-      <TouchableOpacity onPress={() => setShowWow(!showWow)} style={styles.button}>
-        <Text style={textStyles.buttonText}>Button</Text>
-      </TouchableOpacity>
-
-      {showWow && (
-        <Text style={{ padding: 40 }}>Wow it actually works!</Text>
-      )}
-
-      <StatusBar style="auto" />
-    </ScrollView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home">
+          {props => <HomeScreen {...props} isDarkMode={isDarkMode} />}
+        </Stack.Screen>
+        <Stack.Screen name="Setting">
+          {props => <Setting {...props} isDarkMode={isDarkMode} toggleSwitch={toggleSwitch} />}
+        </Stack.Screen>
+        <Stack.Screen name="AlarmFeatures">
+          {props => <AlarmFeatures {...props} isDarkMode={isDarkMode} />}
+        </Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
