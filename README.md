@@ -1,4 +1,12 @@
-# 🕒 UF Alarm Clock 🛌
+# 💥⏰ UF Alarm Clock ⏰💥
+![GitHub last commit](https://img.shields.io/github/last-commit/ufosc/Alarm-Clock)
+![GitHub issues](https://img.shields.io/github/issues/ufosc/Alarm-Clock)
+![GitHub forks](https://img.shields.io/github/forks/ufosc/Alarm-Clock)
+![GitHub stars](https://img.shields.io/github/stars/ufosc/Alarm-Clock)
+![GitHub license](https://img.shields.io/github/license/ufosc/Alarm-Clock)
+![NodeJS](https://img.shields.io/badge/node-%3E%3D%2012.0.0-brightgreen)
+![npm](https://img.shields.io/npm/v/npm)
+
 <br/>
 Welcome to the UF Alarm Clock Project! This innovative alarm clock is designed to revolutionize your mornings by incorporating unique features to ensure you wake up on time and stay alert.
 
@@ -16,7 +24,6 @@ The goal of the UF Alarm Clock project is to create an alarm clock that not only
 
 ## 📥 Installation
 This project requires [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com). Also, the [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&gl=US) app is required on a mobile device. Make sure you have `build-essential` (Linux) or `xcode-select` (MacOS).
-
 
 ```
 sudo apt install build-essential
