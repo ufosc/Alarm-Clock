@@ -28,18 +28,20 @@ export default function Home({ isDarkMode }) { // Accept isDarkMode as a prop
 
   return (
     <ScrollView style={[styles.container, { backgroundColor: dynamicStyles.backgroundColor }]}>
-      <Text style={{ ...textStyles.titleText, padding: 20, paddingTop: 100, color: dynamicStyles.color }}>
+      <Text style={{ ...textStyles.titleText, padding: 20, color: dynamicStyles.color }}>
         Alarm Clock
       </Text>
 
-      <View style={[styles.box, { backgroundColor: dynamicStyles.backgroundColor }]}>
+      {/* <View style={[styles.box, { backgroundColor: dynamicStyles.backgroundColor }]}>
         <Text style={{ ...styles.time, color: dynamicStyles.color }}>{currentTime.toLocaleTimeString()}</Text>
-      </View>
+      </View> */}
 
       <AlarmClock style={{ marginTop: 100, padding: 100, paddingTop: 100 }} />
+      <View style={{height: 200}} />
 
-      <StatusBar />
-      <FooterTab />
+      <StatusBar style={{marginTop: 500}}/>
+
+      <FooterTab style={{marginTop: 500}}/>
     </ScrollView>
   );
 }
