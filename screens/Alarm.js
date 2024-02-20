@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Switch, View, Text, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import * as SMS from 'expo-sms';
 import { textStyles, styles } from '../styles/styles';
 
 function AlarmClock() {
@@ -29,6 +31,7 @@ function AlarmClock() {
       alert('Wake up!');
       setIsAlarmSet(false);
       setCountdown('');
+      // sendAlarmNotification();--> Need to implement feature in settings that takes phone number input
     }, timeUntilAlarm);
 
     // Start updating the countdown every second
@@ -47,6 +50,12 @@ function AlarmClock() {
     }, 1000);
 
     hideDatePicker();
+  };
+  const sendAlarmNotification = async (phoneNumber) => {
+    const isAvailable = await SMS.isAvailableAsync();
+    if (isAvailable) {
+      await SMS.sendSMSAsync(phoneNumber, 'Alarm missed! Wake up!');
+    }
   };
 
   return (
