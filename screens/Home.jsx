@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, ScrollView, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import AlarmClock from './Alarm';
+import AlarmClock from '../components/Clock';
 import { styles, textStyles } from '../styles/styles'; // Adjust the path as needed
 
 export default function Home({ isDarkMode }) {
