@@ -1,30 +1,25 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './screens/Home';
-import Setting from './screens/Setting';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from './screens/Home';
+import Settings from './screens/Settings';
 import AlarmFeatures from './screens/AlarmFeatures';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleSwitch = () => setIsDarkMode(!isDarkMode);
 
+  // TODO: FIX DARK MODE
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home">
-          {props => <HomeScreen {...props} isDarkMode={isDarkMode} />}
-        </Stack.Screen>
-        <Stack.Screen name="Setting">
-          {props => <Setting {...props} isDarkMode={isDarkMode} toggleSwitch={toggleSwitch} />}
-        </Stack.Screen>
-        <Stack.Screen name="AlarmFeatures">
-          {props => <AlarmFeatures {...props} isDarkMode={isDarkMode} />}
-        </Stack.Screen>
-      </Stack.Navigator>
+      <Tab.Navigator initialRouteName="Home">
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Settings" component={Settings} />
+        <Tab.Screen name="AlarmFeatures" component={AlarmFeatures} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }

@@ -67,6 +67,7 @@ const textStyles = StyleSheet.create({
   titleText: {
     fontSize: 50,
     fontWeight: 'bold',
+    marginBottom: 0,
   },
   buttonText: {
     color: 'white',

@@ -10,10 +10,6 @@ function AlarmClock() {
   const [countdown, setCountdown] = useState('');
   const [isAlarmOn, setIsAlarmOn] = useState(true);
 
-  // multiple alarms
-  const [alarms, setAlarms] = useState(null);
-
-
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -21,16 +17,6 @@ function AlarmClock() {
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
   };
-
-
-
-
-
-
-
-  
-
-
 
   const handleConfirm = (date) => {
     setAlarmTime(date);

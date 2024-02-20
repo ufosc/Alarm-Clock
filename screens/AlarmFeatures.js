@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { styles, textStyles } from '../styles/styles';
 import { StatusBar } from 'expo-status-bar';
-import FooterTab from '../components/FooterTab';
+import { styles, textStyles } from '../styles/styles';
 
-function AlarmFeatures({ isDarkMode }) { // Accept isDarkMode as a prop
+function AlarmFeatures({ isDarkMode }) {
+  // Accept isDarkMode as a prop
   // Define dynamic styles based on isDarkMode
   const dynamicStyles = {
     backgroundColor: isDarkMode ? 'darkgrey' : 'white',
@@ -16,7 +16,7 @@ function AlarmFeatures({ isDarkMode }) { // Accept isDarkMode as a prop
       <Text style={[textStyles.titleText, { color: dynamicStyles.color }]}>Alarm Features</Text>
 
       <StatusBar />
-      <FooterTab />
+      {/* <FooterTab /> */}
     </View>
   );
 }
