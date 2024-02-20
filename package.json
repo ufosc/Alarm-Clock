@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "^7.6.2",
+    "@react-navigation/bottom-tabs": "^6.5.12",
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/native-stack": "^6.9.18",
     "expo": "~50.0.3",
