@@ -18,13 +18,14 @@
     "@react-navigation/native-stack": "^6.9.18",
     "expo": "~50.0.3",
     "expo-haptics": "^12.8.1",
+    "expo-sms": "~11.7.1",
     "expo-status-bar": "~1.11.1",
     "moment": "^2.30.1",
     "react": "18.2.0",
     "react-native": "0.73.2",
     "react-native-modal-datetime-picker": "^17.1.0",
     "react-native-push-notification": "^8.1.1",
-    "expo-sms": "~11.7.1"
+    "react-native-vector-icons": "^10.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
