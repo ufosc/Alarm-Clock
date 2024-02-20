@@ -23,7 +23,8 @@
     "react": "18.2.0",
     "react-native": "0.73.2",
     "react-native-modal-datetime-picker": "^17.1.0",
-    "react-native-push-notification": "^8.1.1"
+    "react-native-push-notification": "^8.1.1",
+    "expo-sms": "~11.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
