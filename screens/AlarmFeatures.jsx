@@ -16,7 +16,6 @@ function AlarmFeatures({ isDarkMode }) {
       <Text style={[textStyles.titleText, { color: dynamicStyles.color }]}>Alarm Features</Text>
 
       <StatusBar />
-      {/* <FooterTab /> */}
     </View>
   );
 }

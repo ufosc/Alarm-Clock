@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Switch, View, Text, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import { StatusBar } from 'expo-status-bar';
 import { textStyles, styles } from '../styles/styles';
 
-function AlarmClock() {
+export default function Alarms() {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [alarmTime, setAlarmTime] = useState(null);
   const [isAlarmSet, setIsAlarmSet] = useState(false);
@@ -48,15 +49,11 @@ function AlarmClock() {
 
     hideDatePicker();
   };
-
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      {/* <Text>Alarm Status: {isAlarmSet ? 'Set' : 'Not Set'}</Text> */}
-      {/* {isAlarmSet && <Text>Time Left: {countdown}</Text>} */}
+    <View>
       <TouchableOpacity onPress={showDatePicker} style={styles.button}>
-        <Text style={textStyles.buttonText}>Set Alarm Time</Text>
+        <Text style={textStyles.buttonText}>New Alarm</Text>
       </TouchableOpacity>
-
       <DateTimePickerModal
         textColor="black"
         isVisible={isDatePickerVisible}
@@ -90,8 +87,8 @@ function AlarmClock() {
           />
         </View>
       )}
+      <StatusBar style={{ marginTop: 500 }} />
+
     </View>
   );
 }
-
-export default AlarmClock;
