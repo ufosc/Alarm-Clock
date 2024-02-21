@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Switch, View, Text, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { StatusBar } from 'expo-status-bar';
-import * as SMS from 'expo-sms';
 import { textStyles, styles } from '../styles/styles';
 
 export default function Alarms() {
@@ -51,15 +50,6 @@ export default function Alarms() {
     hideDatePicker();
   };
 
-  // sendAlarmNotification();--> Need to implement feature in settings that takes phone number input
-
-  const sendAlarmNotification = async (phoneNumber) => {
-    const isAvailable = await SMS.isAvailableAsync();
-    if (isAvailable) {
-      await SMS.sendSMSAsync(phoneNumber, 'Alarm missed! Wake up!');
-    }
-  };
-
   return (
     <View>
       <TouchableOpacity onPress={showDatePicker} style={styles.button}>
@@ -99,7 +89,6 @@ export default function Alarms() {
         </View>
       )}
       <StatusBar style={{ marginTop: 500 }} />
-
     </View>
   );
 }
