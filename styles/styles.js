@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     padding: 20,
     // alignItems: 'center',
     // justifyContent: 'center',
-    paddingBottom: 500,
+    paddingBottom: 5,
     marginTop: 20,
   },
   button: {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   alarmTimeBox: {
     // width: 300,
     // height: 100,
-    backgroundColor: 'white',
+    backgroundColor: 'blue',
     padding: 10,
     // margin: 10,
     borderRadius: 700,
@@ -57,6 +57,18 @@ const styles = StyleSheet.create({
   page: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
+  },
+  topNavBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+  },
+  topBarText: {
+    // color: 'orange',
+  },
+  topBarTitle: {
+    fontWeight: 'bold',
   },
 });
 
