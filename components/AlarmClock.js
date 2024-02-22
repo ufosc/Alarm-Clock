@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, Platform } from 'react-native';
-import { styles, textStyles } from '../../styles/styles';
+import { styles, textStyles } from '../styles/styles';
 import DayPicker from './DayPicker';
 import AlarmNameInput from './AlarmNameInput';
 import SoundPicker from './SoundPicker';
@@ -95,6 +95,5 @@ function AlarmClock({ onAlarmSave, editingAlarm }) {
     </View>
   );
 }
-
 
 export default AlarmClock;

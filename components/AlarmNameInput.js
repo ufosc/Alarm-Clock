@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, TextInput } from 'react-native';
-import { styles } from '../../styles/AlarmStyles';
+import { styles } from '../styles/AlarmStyles';
 
-const AlarmNameInput = ({ alarmName, setAlarmName }) => {
+function AlarmNameInput({ alarmName, setAlarmName }) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Label</Text>
@@ -14,7 +14,6 @@ const AlarmNameInput = ({ alarmName, setAlarmName }) => {
       />
     </View>
   );
-};
-
+}
 
 export default AlarmNameInput;

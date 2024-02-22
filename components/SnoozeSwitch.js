@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Switch } from 'react-native';
-import { styles } from '../../styles/AlarmStyles';
+import { styles } from '../styles/AlarmStyles';
 
-const SnoozeSwitch = ({ isSnoozeEnabled, setIsSnoozeEnabled }) => {
+function SnoozeSwitch({ isSnoozeEnabled, setIsSnoozeEnabled }) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Snooze</Text>
@@ -15,6 +15,6 @@ const SnoozeSwitch = ({ isSnoozeEnabled, setIsSnoozeEnabled }) => {
       />
     </View>
   );
-};
+}
 
 export default SnoozeSwitch;

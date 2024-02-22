@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Switch, TouchableOpacity } from 'react-native';
 import { styles } from '../styles/AlarmStyles';
 
-const AlarmCard = ({ alarm, onToggleAlarm, onDelete }) => {
+export default AlarmCard = function ({ alarm, onToggleAlarm, onDelete }) {
   const formattedTime = new Date(alarm.alarmTime).toLocaleTimeString([], {
     hour: '2-digit',
     minute: '2-digit',
@@ -28,5 +28,3 @@ const AlarmCard = ({ alarm, onToggleAlarm, onDelete }) => {
     </View>
   );
 };
-
-export default AlarmCard;

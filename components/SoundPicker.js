@@ -1,8 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { styles } from '../../styles/AlarmStyles';
+import { styles } from '../styles/AlarmStyles';
 
-const SoundPicker = ({ /* pass in any props needed */ }) => {
+function SoundPicker(
+  {
+    /* pass in any props needed */
+  }
+) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Sound</Text>
@@ -16,7 +20,6 @@ const SoundPicker = ({ /* pass in any props needed */ }) => {
       </TouchableOpacity>
     </View>
   );
-};
-
+}
 
 export default SoundPicker;

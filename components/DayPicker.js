@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { styles } from '../../styles/AlarmStyles';
+import { styles } from '../styles/AlarmStyles';
 
-const DayPicker = ({ days, toggleDay }) => {
+function DayPicker({ days, toggleDay }) {
   return (
     <View style={styles.dayContainer}>
       {Object.keys(days).map((day, index) => (
@@ -16,6 +16,6 @@ const DayPicker = ({ days, toggleDay }) => {
       ))}
     </View>
   );
-};
+}
 
 export default DayPicker;
