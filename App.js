@@ -6,16 +6,16 @@ import Home from './screens/Home';
 import Settings from './screens/Settings';
 import AlarmFeatures from './screens/AlarmFeatures';
 import Alarms from './screens/Alarms';
+import { DarkModeProvider } from './contexts/DarkModeContext';
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const toggleSwitch = () => setIsDarkMode(!isDarkMode);
 
   // TODO: FIX DARK MODE
   return (
+    <DarkModeProvider>
     <NavigationContainer>
       <Tab.Navigator initialRouteName="Home">
         <Tab.Screen
@@ -60,5 +60,6 @@ export default function App() {
         />
       </Tab.Navigator>
     </NavigationContainer>
+    </DarkModeProvider>
   );
 }

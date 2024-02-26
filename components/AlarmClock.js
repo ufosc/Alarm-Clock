@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, Platform } from 'react-native';
 import { styles, textStyles } from '../styles/styles';
+import { useDarkMode } from '../contexts/DarkModeContext';
 import DayPicker from './DayPicker';
 import AlarmNameInput from './AlarmNameInput';
 import SoundPicker from './SoundPicker';
@@ -9,6 +10,7 @@ import TimePickerIOS from './TimePickerIOS';
 import TimePickerAndroid from './TimePickerAndroid';
 
 function AlarmClock({ onAlarmSave, editingAlarm }) {
+  const { isDarkMode } = useDarkMode();
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [alarmTime, setAlarmTime] = useState(new Date());
   const [alarmName, setAlarmName] = useState('');
@@ -53,10 +55,10 @@ function AlarmClock({ onAlarmSave, editingAlarm }) {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={openAlarmSetting} style={styles.button}>
-        <Text style={textStyles.buttonText}>Set Alarm Time</Text>
-      </TouchableOpacity>
+    <View style={dynamicStyles.container}>
+    <TouchableOpacity onPress={openAlarmSetting} style={styles.button}>
+      <Text style={textStyles.buttonText}>Set Alarm Time</Text>
+    </TouchableOpacity>
 
       <Modal
         animationType="slide"

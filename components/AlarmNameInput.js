@@ -1,13 +1,16 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
-import { styles } from '../styles/AlarmStyles';
+import { View, Text } from 'react-native';
+import { useDarkMode } from '../contexts/DarkModeContext';
+import { styles, getStyle } from '../styles/AlarmStyles';
 
 function AlarmNameInput({ alarmName, setAlarmName }) {
+  const { isDarkMode } = useDarkMode();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Label</Text>
+    <View style={getStyle(styles.container, isDarkMode)}>
+      <Text style={getStyle(styles.label, isDarkMode)}>Label</Text>
       <TextInput
-        style={styles.textInput}
+        style={getStyle(styles.textInput, isDarkMode)}
         onChangeText={setAlarmName}
         value={alarmName}
         placeholder="Alarm"

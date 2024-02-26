@@ -88,3 +88,16 @@ export const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
+
+export const getDynamicStyles = (isDarkMode) => StyleSheet.create({
+  container: {
+    ...styles.container,
+    borderBottomColor: isDarkMode ? 'darkgrey' : 'grey',
+    backgroundColor: isDarkMode ? '#333' : 'white',
+  },
+  label: {
+    ...styles.label,
+    color: isDarkMode ? 'white' : 'black',
+  },
+  // ... Add dark mode styles for other components
+});
