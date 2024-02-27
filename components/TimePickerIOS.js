@@ -1,7 +1,10 @@
 import React from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { useDarkMode } from '../contexts/DarkModeContext';
 
 const TimePickerIOS = ({ alarmTime, setAlarmTime }) => {
+  const { isDarkMode } = useDarkMode();
+
   return (
     <DateTimePicker
       value={alarmTime}
@@ -11,7 +14,11 @@ const TimePickerIOS = ({ alarmTime, setAlarmTime }) => {
         const currentDate = selectedDate || alarmTime;
         setAlarmTime(currentDate);
       }}
-      style={{ width: '100%', backgroundColor: 'white' }}
+      style={{
+        width: '100%',
+        backgroundColor: isDarkMode ? 'darkgrey' : 'white',
+        color: isDarkMode ? 'white' : 'black',
+      }}
     />
   );
 };

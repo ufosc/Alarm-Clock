@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, Platform } from 'react-native';
 import { styles, textStyles } from '../styles/styles';
+import { getDynamicStyles } from '../styles/AlarmStyles';
 import { useDarkMode } from '../contexts/DarkModeContext';
 import DayPicker from './DayPicker';
 import AlarmNameInput from './AlarmNameInput';
@@ -10,7 +11,7 @@ import TimePickerIOS from './TimePickerIOS';
 import TimePickerAndroid from './TimePickerAndroid';
 
 function AlarmClock({ onAlarmSave, editingAlarm }) {
-  const { isDarkMode } = useDarkMode();
+  const { isDarkMode } = useDarkMode(); 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [alarmTime, setAlarmTime] = useState(new Date());
   const [alarmName, setAlarmName] = useState('');
@@ -26,6 +27,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }) {
   const [isSnoozeEnabled, setIsSnoozeEnabled] = useState(true);
   const [isAlarmSettingVisible, setAlarmSettingVisible] = useState(false);
   const isEditing = editingAlarm != null;
+  const dynamicStyles = getDynamicStyles(isDarkMode);
 
   const toggleDay = (day) => {
     setDays({ ...days, [day]: !days[day] });
@@ -56,24 +58,24 @@ function AlarmClock({ onAlarmSave, editingAlarm }) {
 
   return (
     <View style={dynamicStyles.container}>
-    <TouchableOpacity onPress={openAlarmSetting} style={styles.button}>
-      <Text style={textStyles.buttonText}>Set Alarm Time</Text>
-    </TouchableOpacity>
-
+      <TouchableOpacity onPress={openAlarmSetting} style={styles.button}>
+        <Text style={textStyles.buttonText}>Set Alarm Time</Text>
+      </TouchableOpacity>
       <Modal
         animationType="slide"
         transparent={false}
         visible={isAlarmSettingVisible}
         onRequestClose={closeAlarmSetting}
+        style={dynamicStyles.modalContainer} 
       >
         <View style={{ flex: 1, paddingTop: 22 }}>
-          <View style={styles.topNavBar}>
+          <View style={dynamicStyles.topNavBar}>
             <TouchableOpacity onPress={closeAlarmSetting}>
-              <Text style={styles.topBarText}>Cancel</Text>
+              <Text style={dynamicStyles.topBarText}>Cancel</Text>
             </TouchableOpacity>
-            <Text style={styles.topBarTitle}>{isEditing ? 'Edit Alarm' : 'Add Alarm'}</Text>
+            <Text style={dynamicStyles.topBarTitle}>{isEditing ? 'Edit Alarm' : 'Add Alarm'}</Text>
             <TouchableOpacity onPress={saveAlarm}>
-              <Text style={styles.topBarText}>Save</Text>
+              <Text style={dynamicStyles.topBarText}>Save</Text>
             </TouchableOpacity>
           </View>
 

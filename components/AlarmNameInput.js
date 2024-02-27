@@ -1,16 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { useDarkMode } from '../contexts/DarkModeContext';
-import { styles, getStyle } from '../styles/AlarmStyles';
+import { getDynamicStyles } from '../styles/AlarmStyles';
 
 function AlarmNameInput({ alarmName, setAlarmName }) {
   const { isDarkMode } = useDarkMode();
+  const dynamicStyles = getDynamicStyles(isDarkMode); 
 
   return (
-    <View style={getStyle(styles.container, isDarkMode)}>
-      <Text style={getStyle(styles.label, isDarkMode)}>Label</Text>
+    <View style={dynamicStyles.container}> 
+      <Text style={dynamicStyles.label}>Label</Text>
       <TextInput
-        style={getStyle(styles.textInput, isDarkMode)}
+        style={dynamicStyles.textInput} // Apply the dynamic styles here too 
         onChangeText={setAlarmName}
         value={alarmName}
         placeholder="Alarm"

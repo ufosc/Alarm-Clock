@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, ScrollView, View } from 'react-native';
+import { Text, ScrollView, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AlarmClock from '../components/AlarmClock';
 import { styles, textStyles } from '../styles/styles';
@@ -94,19 +94,21 @@ export default function Home() {
   // }
 
   return (
-    <ScrollView style={containerStyle}>
-      <Text style={[textStyles.titleText, textStyle, { padding: 20 }]}>Alarm Clock</Text>
-
+    <ScrollView style={isDarkMode ? styles.darkContainer : styles.container}>
+      <Text style={[textStyles.titleText, isDarkMode ? { color: 'white' } : { color: 'black' }]}>
+        Alarm Clock
+      </Text>
       {/* <View style={[styles.box, { backgroundColor: dynamicStyles.backgroundColor }]}>
         <Text style={{ ...styles.time, color: dynamicStyles.color }}>{currentTime.toLocaleTimeString()}</Text>
       </View> */}
 
-      <AlarmClock
+         <AlarmClock
         editingAlarm={selectedAlarm}
         onAlarmSave={handleSaveAlarm}
         onAlarmDelete={handleDeleteAlarm}
         style={{ marginTop: 100, padding: 100, paddingTop: 100 }}
       />
+
 
       {/* Render a list of AlarmCards */}
       {alarms.map((alarm) => (
