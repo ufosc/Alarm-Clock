@@ -24,6 +24,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 50,
   },
+  deleteButtonText: {
+    // Define your styles here
+    color: 'red', // Example: Makes the text color red
+    fontSize: 14, // Example: Sets the font size to 20
+    // Add other styling properties as needed
+  },
   box: {
     width: 300,
     height: 100,

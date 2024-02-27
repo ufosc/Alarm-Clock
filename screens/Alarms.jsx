@@ -12,6 +12,7 @@ export default function Alarms() {
   const [isAlarmSet, setIsAlarmSet] = useState(false);
   const [countdown, setCountdown] = useState('');
   const [isAlarmOn, setIsAlarmOn] = useState(true);
+  const [textColor, setTextColor] = useState('black');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
