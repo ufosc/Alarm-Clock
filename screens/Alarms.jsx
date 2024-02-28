@@ -1,95 +1,81 @@
 import React, { useState } from 'react';
-import { Switch, View, Text, TouchableOpacity } from 'react-native';
+import { Switch, View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { StatusBar } from 'expo-status-bar';
 import { textStyles, styles } from '../styles/styles';
+import AlarmClock from '../components/AlarmClock';
+import AlarmCard from '../components/AlarmCard';
 
-export default function Alarms() {
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [alarmTime, setAlarmTime] = useState(null);
-  const [isAlarmSet, setIsAlarmSet] = useState(false);
-  const [countdown, setCountdown] = useState('');
-  const [isAlarmOn, setIsAlarmOn] = useState(true);
-  const [textColor, setTextColor] = useState('black');
 
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
+export default function Alarms({ isDarkMode }) {
+  const [alarms, setAlarms] = useState([]);
+  const [selectedAlarm, setSelectedAlarm] = useState(null);
+
+  // Define dynamic styles based on isDarkMode
+  const dynamicStyles = {
+    backgroundColor: isDarkMode ? 'darkgrey' : 'white',
+    color: isDarkMode ? 'white' : 'black',
   };
 
-  const hideDatePicker = () => {
-    setDatePickerVisibility(false);
+  // Function to handle saving alarm data
+  const handleSaveAlarm = (alarmData) => {
+    if (alarms.some((alarm) => alarm.id === alarmData.id)) {
+      // Update existing alarm
+      setAlarms(alarms.map((alarm) => (alarm.id === alarmData.id ? alarmData : alarm)));
+    } else {
+      // Add new alarm
+      setAlarms([...alarms, alarmData]);
+    }
+    // Close modal or navigate back
   };
 
-  const handleConfirm = (date) => {
-    setAlarmTime(date);
-    setIsAlarmSet(true);
+  const handleDeleteAlarm = (alarmId) => {
+    setAlarms(alarms.filter((alarm) => alarm.id !== alarmId));
+  };
 
-    // Set a timeout to trigger the alarm
-    const currentTime = new Date();
-    const timeUntilAlarm = date - currentTime;
-    setTimeout(() => {
-      alert('Wake up!');
-      setIsAlarmSet(false);
-      setCountdown('');
-    }, timeUntilAlarm);
+  const handleToggleAlarm = (alarmId) => {
+    setAlarms(
+      alarms.map((alarm) => {
+        if (alarm.id === alarmId) {
+          return { ...alarm, isActive: !alarm.isActive };
+        }
+        return alarm;
+      })
+    );
+  };
 
-    // Start updating the countdown every second
-    const intervalId = setInterval(() => {
-      const remainingTime = date - new Date();
-      if (remainingTime <= 0) {
-        clearInterval(intervalId);
-        setCountdown('');
-      } else {
-        const minutes = Math.floor(remainingTime / 60000);
-        const formatMinutes = String(minutes).padStart(2, '0');
-        const seconds = Math.floor((remainingTime % 60000) / 1000);
-        const formatSeconds = String(seconds).padStart(2, '0');
-        setCountdown(`${formatMinutes} min : ${formatSeconds} sec`);
-      }
-    }, 1000);
-
-    hideDatePicker();
+  const handleEditAlarm = (alarm) => {
+    setSelectedAlarm(alarm);
   };
 
   return (
-    <View>
-      <TouchableOpacity onPress={showDatePicker} style={styles.button}>
-        <Text style={textStyles.buttonText}>New Alarm</Text>
-      </TouchableOpacity>
-      <DateTimePickerModal
-        textColor="black"
-        isVisible={isDatePickerVisible}
-        mode="time"
-        date={new Date()}
-        onConfirm={handleConfirm}
-        onCancel={hideDatePicker}
-      />
-      {/* <Text>{isAlarmOn ? 'Alarm Status: On' : isAlarmSet? 'Alarm Status: Off' : ''}</Text> */}
-      {/* {isAlarmSet && <Text>Time Left: {countdown}</Text>} */}
-      {isAlarmSet && (
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
-          <View style={styles.alarmTimeBox}>
-            <Text style={textStyles.timeText}>
-              {alarmTime.toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true,
-              })}{' '}
-            </Text>
-          </View>
+    <ScrollView>
+      <Text style={{ ...textStyles.titleText, padding: 20, color: dynamicStyles.color }}>
+        Alarm Clock
+      </Text>
 
-          {/* This switch doesn't do anything yet but it totally could! */}
-          <Switch
-            style={{ marginLeft: 100 }}
-            trackColor={{ false: '#767577', true: 'lightgreen' }}
-            thumbColor={isAlarmOn ? 'f4f3f4' : '#f4f3f4'}
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={() => setIsAlarmOn(!isAlarmOn)}
-            value={isAlarmOn}
-          />
-        </View>
-      )}
+      {/* <View style={[styles.box, { backgroundColor: dynamicStyles.backgroundColor }]}>
+        <Text style={{ ...styles.time, color: dynamicStyles.color }}>{currentTime.toLocaleTimeString()}</Text>
+      </View> */}
+
+      <AlarmClock
+        editingAlarm={selectedAlarm}
+        onAlarmSave={handleSaveAlarm}
+        onAlarmDelete={handleDeleteAlarm}
+        style={{ marginTop: 100, padding: 100, paddingTop: 100 }}
+      />
+
+      {/* Render a list of AlarmCards */}
+      {alarms.map((alarm) => (
+        <AlarmCard
+          key={alarm.id}
+          alarm={alarm}
+          onToggleAlarm={handleToggleAlarm}
+          onDelete={handleDeleteAlarm}
+        />
+      ))}
+
       <StatusBar style={{ marginTop: 500 }} />
-    </View>
+    </ScrollView>
   );
 }
