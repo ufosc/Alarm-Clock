@@ -1,16 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, ScrollView, TouchableOpacity, View } from 'react-native';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Text, ScrollView, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-// import AlarmClock from './Alarm';
 import AlarmClock from '../components/AlarmClock';
 import { styles, textStyles } from '../styles/styles';
 import AlarmCard from '../components/AlarmCard';
 import moment from 'moment-timezone';
 import { Picker } from '@react-native-picker/picker';
+import { useDarkMode } from '../contexts/DarkModeContext';
 
-export default function Home({ isDarkMode }) {
-  // Accept isDarkMode as a prop
+export default function Home() {
+  const { isDarkMode } = useDarkMode(); // Use the hook
   const navigation = useNavigation();
   const [currentTime, setCurrentTime] = useState(new Date());
   const [alarms, setAlarms] = useState([]);
@@ -79,34 +78,37 @@ export default function Home({ isDarkMode }) {
     setSelectedAlarm(alarm);
   };
 
+  const containerStyle = isDarkMode ? styles.darkContainer : styles.container;
+  const textStyle = isDarkMode ? { color: 'white' } : { color: 'black' };
+
   // When rendering AlarmCards
-  {
-    alarms.map((alarm, index) => (
-      <AlarmCard
-        key={alarm.id}
-        alarm={alarm}
-        onToggleAlarm={handleToggleAlarm}
-        onPress={handleEditAlarm}
-      />
-    ));
-  }
+  // {
+  //   alarms.map((alarm, index) => (
+  //     <AlarmCard
+  //       key={alarm.id}
+  //       alarm={alarm}
+  //       onToggleAlarm={handleToggleAlarm}
+  //       onPress={handleEditAlarm}
+  //     />
+  //   ));
+  // }
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: dynamicStyles.backgroundColor }]}>
-      <Text style={{ ...textStyles.titleText, padding: 20, color: dynamicStyles.color }}>
+    <ScrollView style={isDarkMode ? styles.darkContainer : styles.container}>
+      <Text style={[textStyles.titleText, isDarkMode ? { color: 'white' } : { color: 'black' }]}>
         Alarm Clock
       </Text>
-
       {/* <View style={[styles.box, { backgroundColor: dynamicStyles.backgroundColor }]}>
         <Text style={{ ...styles.time, color: dynamicStyles.color }}>{currentTime.toLocaleTimeString()}</Text>
       </View> */}
 
-      <AlarmClock
+         <AlarmClock
         editingAlarm={selectedAlarm}
         onAlarmSave={handleSaveAlarm}
         onAlarmDelete={handleDeleteAlarm}
         style={{ marginTop: 100, padding: 100, paddingTop: 100 }}
       />
+
 
       {/* Render a list of AlarmCards */}
       {alarms.map((alarm) => (

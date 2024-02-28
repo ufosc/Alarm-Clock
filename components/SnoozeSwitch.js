@@ -1,11 +1,15 @@
 import React from 'react';
 import { View, Text, Switch } from 'react-native';
-import { styles } from '../styles/AlarmStyles';
+import {  getDynamicStyles } from '../styles/AlarmStyles';
+import { useDarkMode } from '../contexts/DarkModeContext';
 
 function SnoozeSwitch({ isSnoozeEnabled, setIsSnoozeEnabled }) {
+  const { isDarkMode } = useDarkMode(); 
+  const dynamicStyles = getDynamicStyles(isDarkMode); 
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Snooze</Text>
+    <View style={dynamicStyles.container}>
+      <Text style={dynamicStyles.label}>Snooze</Text>
       <Switch
         trackColor={{ false: 'blue', true: 'lightgrey' }}
         thumbColor={isSnoozeEnabled ? 'green' : 'lightgrey'}

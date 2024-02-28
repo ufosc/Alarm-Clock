@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Switch, View, Text, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import { styles, textStyles } from '../styles/styles';
 import { StatusBar } from 'expo-status-bar';
-import { textStyles, styles } from '../styles/styles';
+import { useDarkMode } from '../contexts/DarkModeContext'; // Import the hook
 
 export default function Alarms() {
+  const { isDarkMode } = useDarkMode(); // Use the hook
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [alarmTime, setAlarmTime] = useState(null);
   const [isAlarmSet, setIsAlarmSet] = useState(false);
@@ -51,11 +53,15 @@ export default function Alarms() {
     hideDatePicker();
   };
 
+  const containerStyle = isDarkMode ? styles.darkContainer : { ...styles.container, ...{ marginTop: 10 } }; // Adjust as necessary for dark mode
+  const buttonTextStyle = isDarkMode ? { ...textStyles.buttonText, color: 'white' } : textStyles.buttonText;
+
   return (
-    <View>
+    <View style={containerStyle}>
       <TouchableOpacity onPress={showDatePicker} style={styles.button}>
-        <Text style={textStyles.buttonText}>New Alarm</Text>
+        <Text style={buttonTextStyle}>New Alarm</Text>
       </TouchableOpacity>
+
       <DateTimePickerModal
         textColor="black"
         isVisible={isDatePickerVisible}

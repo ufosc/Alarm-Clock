@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Switch, TouchableOpacity } from 'react-native';
-import { styles } from '../styles/AlarmStyles';
+import { getDynamicStyles } from '../styles/AlarmStyles';
+import { useDarkMode } from '../contexts/DarkModeContext';
 
 export default AlarmCard = function ({ alarm, onToggleAlarm, onDelete }) {
   const formattedTime = new Date(alarm.alarmTime).toLocaleTimeString([], {
@@ -8,21 +9,23 @@ export default AlarmCard = function ({ alarm, onToggleAlarm, onDelete }) {
     minute: '2-digit',
     hour12: true,
   });
+  const dynamicStyles = getDynamicStyles(isDarkMode); 
+  const { isDarkMode } = useDarkMode();
 
   return (
-    <View style={styles.card}>
-      <View style={styles.content}>
-        <Text style={styles.time}>{formattedTime}</Text>
-        <Text style={styles.name}>{alarm.alarmName}</Text>
+    <View style={dynamicStyles.card}>
+      <View style={dynamicStyles.content}>
+        <Text style={dynamicStyles.time}>{formattedTime}</Text>
+        <Text style={dynamicStyles.name}>{alarm.alarmName}</Text>
       </View>
-      <View style={styles.controls}>
+      <View style={dynamicStyles.controls}>
         <Switch
           onValueChange={() => onToggleAlarm(alarm.id)}
           value={alarm.isActive}
-          style={styles.switch}
+          style={dynamicStyles.switch}
         />
-        <TouchableOpacity onPress={() => onDelete(alarm.id)} style={styles.deleteButton}>
-          <Text style={styles.deleteButtonText}>Delete</Text>
+        <TouchableOpacity onPress={() => onDelete(alarm.id)} style={dynamicStyles.deleteButton}>
+          <Text style={dynamicStyles.deleteButtonText}>Delete</Text>
         </TouchableOpacity>
       </View>
     </View>

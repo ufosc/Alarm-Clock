@@ -1,22 +1,23 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { styles } from '../styles/AlarmStyles';
+import {  getDynamicStyles } from '../styles/AlarmStyles';
+import { useDarkMode } from '../contexts/DarkModeContext';
 
-function SoundPicker(
-  {
-    /* pass in any props needed */
-  }
-) {
+function SoundPicker({ /* pass in any props needed */ }) {
+  const { isDarkMode } = useDarkMode(); 
+  const dynamicStyles = getDynamicStyles(isDarkMode); 
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Sound</Text>
+
+    <View style={dynamicStyles.container}>
+      <Text style={dynamicStyles.label}>Sound</Text>
       <TouchableOpacity
         onPress={() => {
           /* Placeholder for sound selection functionality */
         }}
-        style={styles.touchable}
+        style={dynamicStyles.touchable}
       >
-        <Text style={styles.placeholder}>Select Sound</Text>
+        <Text style={dynamicStyles.placeholder}>Select Sound</Text>
       </TouchableOpacity>
     </View>
   );
