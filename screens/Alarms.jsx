@@ -3,7 +3,6 @@ import { Switch, View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { styles, textStyles } from '../styles/styles';
 import { StatusBar } from 'expo-status-bar';
-import { textStyles, styles } from '../styles/styles';
 import AlarmClock from '../components/AlarmClock';
 import AlarmCard from '../components/AlarmCard';
 
