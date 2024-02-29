@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Switch, TouchableOpacity } from 'react-native';
+import { View, Text, Switch, TouchableOpacity, Alert } from 'react-native';
 import { getDynamicStyles } from '../styles/AlarmStyles';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
@@ -11,6 +11,15 @@ export default AlarmCard = function ({ alarm, onToggleAlarm, onDelete }) {
   });
   const dynamicStyles = getDynamicStyles(isDarkMode); 
   const { isDarkMode } = useDarkMode();
+
+  // shamelessly stolen from react native documentation
+  const createTwoButtonAlert = () =>
+    Alert.alert('Confirm deletion', 'Are you sure you want to delete this alarm?', [
+      {
+        text: 'Cancel',
+      },
+      { text: 'OK', onPress: () => onDelete(alarm.id) },
+  ]);
 
   return (
     <View style={dynamicStyles.card}>
@@ -24,7 +33,7 @@ export default AlarmCard = function ({ alarm, onToggleAlarm, onDelete }) {
           value={alarm.isActive}
           style={dynamicStyles.switch}
         />
-        <TouchableOpacity onPress={() => onDelete(alarm.id)} style={dynamicStyles.deleteButton}>
+        <TouchableOpacity onPress={() => createTwoButtonAlert()} style={dynamicStyles.deleteButton}>
           <Text style={dynamicStyles.deleteButtonText}>Delete</Text>
         </TouchableOpacity>
       </View>
