@@ -11,7 +11,7 @@ import TimePickerIOS from './TimePickerIOS';
 import TimePickerAndroid from './TimePickerAndroid';
 
 function AlarmClock({ onAlarmSave, editingAlarm }) {
-  const { isDarkMode } = useDarkMode(); 
+  const { isDarkMode } = useDarkMode();
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [alarmTime, setAlarmTime] = useState(new Date());
   const [alarmName, setAlarmName] = useState('');
@@ -66,7 +66,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }) {
         transparent={false}
         visible={isAlarmSettingVisible}
         onRequestClose={closeAlarmSetting}
-        style={dynamicStyles.modalContainer} 
+        style={dynamicStyles.modalContainer}
       >
         <View style={{ flex: 1, paddingTop: 22 }}>
           <View style={dynamicStyles.topNavBar}>

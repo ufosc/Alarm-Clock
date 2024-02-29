@@ -2,7 +2,7 @@ import React from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
-const TimePickerIOS = ({ alarmTime, setAlarmTime }) => {
+function TimePickerIOS({ alarmTime, setAlarmTime }) {
   const { isDarkMode } = useDarkMode();
 
   return (
@@ -21,6 +21,6 @@ const TimePickerIOS = ({ alarmTime, setAlarmTime }) => {
       }}
     />
   );
-};
+}
 
 export default TimePickerIOS;
