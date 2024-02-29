@@ -10,6 +10,13 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     marginTop: 20,
   },
+  darkContainer: {
+    flex: 1,
+    backgroundColor: '#333', 
+    padding: 20,
+    paddingBottom: 5,
+    marginTop: 20,
+  },
   button: {
     backgroundColor: 'lightgreen',
     paddingVertical: 15,
