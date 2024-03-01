@@ -106,4 +106,34 @@ const textStyles = StyleSheet.create({
   },
 });
 
-export { styles, textStyles };
+const settingStyles = StyleSheet.create({
+  container:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 20,
+    marginVertical: 10,
+    borderRadius: 10,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  content: {
+    flexDirection: 'column',
+  },
+  settingText:{
+    fontSize: 20,
+    flex: 1,
+  },
+  controls: {
+    alignItems: 'flex-end',
+  },
+  toggle:{
+    
+  },
+});
+
+export { styles, textStyles, settingStyles };
