@@ -8,9 +8,11 @@ import AlarmCard from '../components/AlarmCard';
 
 import { useDarkMode } from '../contexts/DarkModeContext'; // Import the hook
 
-export default function Alarms({ isDarkMode }) {
+export default function Alarms() {
   const [alarms, setAlarms] = useState([]);
   const [selectedAlarm, setSelectedAlarm] = useState(null);
+
+  const { isDarkMode } = useDarkMode();
 
   // Define dynamic styles based on isDarkMode
   const dynamicStyles = {
