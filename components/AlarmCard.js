@@ -9,7 +9,7 @@ export default AlarmCard = function ({ alarm, onToggleAlarm, onDelete }) {
     minute: '2-digit',
     hour12: true,
   });
-  const dynamicStyles = getDynamicStyles(isDarkMode); 
+  const dynamicStyles = getDynamicStyles(isDarkMode);
   const { isDarkMode } = useDarkMode();
 
   // shamelessly stolen from react native documentation
@@ -19,7 +19,7 @@ export default AlarmCard = function ({ alarm, onToggleAlarm, onDelete }) {
         text: 'Cancel',
       },
       { text: 'OK', onPress: () => onDelete(alarm.id) },
-  ]);
+    ]);
 
   return (
     <View style={dynamicStyles.card}>

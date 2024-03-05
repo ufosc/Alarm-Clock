@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, Switch } from 'react-native';
-import {  getDynamicStyles } from '../styles/AlarmStyles';
+import { getDynamicStyles } from '../styles/AlarmStyles';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
 function SnoozeSwitch({ isSnoozeEnabled, setIsSnoozeEnabled }) {
-  const { isDarkMode } = useDarkMode(); 
-  const dynamicStyles = getDynamicStyles(isDarkMode); 
+  const { isDarkMode } = useDarkMode();
+  const dynamicStyles = getDynamicStyles(isDarkMode);
 
   return (
     <View style={dynamicStyles.container}>

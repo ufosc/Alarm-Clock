@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, Platform } from 'react-native';
-import { styles, textStyles } from '../styles/styles';
+import { styles, textStyles } from '../styles';
 import { getDynamicStyles } from '../styles/AlarmStyles';
 import { useDarkMode } from '../contexts/DarkModeContext';
 import DayPicker from './DayPicker';

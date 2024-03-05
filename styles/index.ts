@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import * as AlarmStyles from './AlarmStyles';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
   },
   darkContainer: {
     flex: 1,
-    backgroundColor: '#333', 
+    backgroundColor: '#333',
     padding: 20,
     paddingBottom: 5,
     marginTop: 20,
@@ -107,7 +108,7 @@ const textStyles = StyleSheet.create({
 });
 
 const settingStyles = StyleSheet.create({
-  container:{
+  container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -124,16 +125,14 @@ const settingStyles = StyleSheet.create({
   content: {
     flexDirection: 'column',
   },
-  settingText:{
+  settingText: {
     fontSize: 20,
     flex: 1,
   },
   controls: {
     alignItems: 'flex-end',
   },
-  toggle:{
-    
-  },
+  toggle: {},
 });
 
 export { styles, textStyles, settingStyles };
