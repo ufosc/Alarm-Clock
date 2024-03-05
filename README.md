@@ -1,4 +1,5 @@
 # 💥⏰ UF Alarm Clock ⏰💥
+
 ![GitHub last commit](https://img.shields.io/github/last-commit/ufosc/Alarm-Clock)
 ![GitHub issues](https://img.shields.io/github/issues/ufosc/Alarm-Clock)
 ![GitHub forks](https://img.shields.io/github/forks/ufosc/Alarm-Clock)

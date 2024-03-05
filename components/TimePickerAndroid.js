@@ -32,7 +32,6 @@ function TimePickerAndroid({ isPickerVisible, setPickerVisible, alarmTime, setAl
         onCancel={() => setPickerVisible(false)}
       />
     </View>
-
   );
 }
 

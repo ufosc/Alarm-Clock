@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import moment from 'moment-timezone';
 import { Picker } from '@react-native-picker/picker';
 import { styles, textStyles } from '../styles/styles';
-import AlarmCard from '../components/AlarmCard';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
 export default function Home() {

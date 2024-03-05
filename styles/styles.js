@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   darkContainer: {
     flex: 1,
-    backgroundColor: '#333', 
+    backgroundColor: '#333',
     padding: 20,
     paddingBottom: 5,
     marginTop: 20,
