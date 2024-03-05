@@ -1,4 +1,4 @@
 export interface Alarm {
-    id: number,
-    isActive?: boolean,
+  id: number;
+  isActive?: boolean;
 }

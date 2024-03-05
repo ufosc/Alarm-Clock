@@ -108,7 +108,7 @@ const textStyles = StyleSheet.create({
 });
 
 const settingStyles = StyleSheet.create({
-  container:{
+  container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -125,16 +125,14 @@ const settingStyles = StyleSheet.create({
   content: {
     flexDirection: 'column',
   },
-  settingText:{
+  settingText: {
     fontSize: 20,
     flex: 1,
   },
   controls: {
     alignItems: 'flex-end',
   },
-  toggle:{
-    
-  },
+  toggle: {},
 });
 
 export { styles, textStyles, settingStyles };

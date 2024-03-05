@@ -14,8 +14,11 @@ function Setting() {
     <View style={[styles.container, { backgroundColor }]}>
       <Text style={[textStyles.titleText, { color: textColor }]}>Settings</Text>
 
-      <SettingsToggle name='Dark Mode' value={isDarkMode} onValueChange={toggleSwitch}></SettingsToggle>
-      
+      <SettingsToggle
+        name="Dark Mode"
+        value={isDarkMode}
+        onValueChange={toggleSwitch}
+      ></SettingsToggle>
     </View>
   );
 }

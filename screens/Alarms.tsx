@@ -65,10 +65,7 @@ export default function Alarms() {
         Alarm Clock
       </Text>
 
-      <AlarmClock
-        editingAlarm={selectedAlarm}
-        onAlarmSave={handleSaveAlarm}
-      />
+      <AlarmClock editingAlarm={selectedAlarm} onAlarmSave={handleSaveAlarm} />
 
       {/* Render a list of AlarmCards */}
       {alarms.map((alarm) => (
