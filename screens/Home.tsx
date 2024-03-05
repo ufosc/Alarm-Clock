@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 // import AlarmClock from './Alarm';
 import moment from 'moment-timezone';
 import { Picker } from '@react-native-picker/picker';
-import { styles, textStyles } from '../styles/styles';
+import { styles, textStyles } from '../styles/index';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
   const navigation = useNavigation();
   const [currentTime, setCurrentTime] = useState(new Date());
   const [selectedTimeZone, setSelectedTimeZone] = useState(moment.tz.guess());
-  const [screenClock, setScreenClock] = useState([]);
+  const [screenClock, setScreenClock] = useState<string[]>([]);
   const [modalVisible, setModalVisible] = useState(false);
   const timeZones = moment.tz.names();
 
@@ -29,13 +29,13 @@ export default function Home() {
     color: isDarkMode ? 'white' : 'black',
   };
 
-  const addNewTimeZone = (zone) => {
+  const addNewTimeZone = (zone: string) => {
     if (!screenClock.includes(zone)) {
       setScreenClock([...screenClock, zone]);
     }
   };
 
-  const removeTimeZone = (index) => {
+  const removeTimeZone = (index: number) => {
     setScreenClock((screenClock) => screenClock.filter((_, i) => i !== index));
   };
 
@@ -67,7 +67,7 @@ export default function Home() {
         </TouchableOpacity>
         {modalVisible && (
           <Picker
-            style={styles.picker}
+            // style={styles.picker}: Unused style
             selectedValue={selectedTimeZone}
             onValueChange={(itemValue) => {
               setSelectedTimeZone(itemValue);

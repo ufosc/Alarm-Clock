@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useDarkMode } from '../contexts/DarkModeContext';
-import { styles, textStyles } from '../styles/styles';
+import { styles, textStyles } from '../styles';
 
 function AlarmFeatures() {
   const { isDarkMode } = useDarkMode();

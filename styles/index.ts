@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import * as AlarmStyles from './AlarmStyles';
 
 const styles = StyleSheet.create({
   container: {
@@ -106,4 +107,4 @@ const textStyles = StyleSheet.create({
   },
 });
 
-export { styles, textStyles };
+export { styles, textStyles, AlarmStyles };

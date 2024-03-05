@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Switch, StyleSheet } from 'react-native';
-import { styles, textStyles } from '../styles/styles';
+import { styles, textStyles } from '../styles';
 import { useDarkMode } from '../contexts/DarkModeContext'; // Make sure to import useDarkMode
 
 function Setting() {

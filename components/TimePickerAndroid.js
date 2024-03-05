@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import { styles, textStyles } from '../styles/styles';
+import { styles, textStyles } from '../styles';
 
 function TimePickerAndroid({ isPickerVisible, setPickerVisible, alarmTime, setAlarmTime }) {
   return (

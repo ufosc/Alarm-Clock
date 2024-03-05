@@ -6,7 +6,7 @@ export function useDarkMode() {
   return useContext(DarkModeContext);
 }
 
-export const DarkModeProvider = ({ children }) => {
+export function DarkModeProvider({ children }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleSwitch = () => setIsDarkMode(!isDarkMode);
@@ -16,4 +16,4 @@ export const DarkModeProvider = ({ children }) => {
       {children}
     </DarkModeContext.Provider>
   );
-};
+}
