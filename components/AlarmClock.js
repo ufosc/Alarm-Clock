@@ -41,6 +41,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }) {
       days,
       // sound, // When you've implemented sound selection
       isSnoozeEnabled,
+      isActive: true,
     };
     onAlarmSave(alarmData);
 
