@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import * as AlarmStyles from './AlarmStyles';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,7 +8,14 @@ const styles = StyleSheet.create({
     padding: 20,
     // alignItems: 'center',
     // justifyContent: 'center',
-    paddingBottom: 500,
+    paddingBottom: 5,
+    marginTop: 20,
+  },
+  darkContainer: {
+    flex: 1,
+    backgroundColor: '#333',
+    padding: 20,
+    paddingBottom: 5,
     marginTop: 20,
   },
   button: {
@@ -16,6 +24,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     borderRadius: 5,
     marginBottom: 50,
+  },
+  deleteButtonText: {
+    // Define your styles here
+    color: 'red', // Example: Makes the text color red
+    fontSize: 14, // Example: Sets the font size to 20
+    // Add other styling properties as needed
   },
   box: {
     width: 300,
@@ -31,7 +45,7 @@ const styles = StyleSheet.create({
   alarmTimeBox: {
     // width: 300,
     // height: 100,
-    backgroundColor: 'white',
+    backgroundColor: 'blue',
     padding: 10,
     // margin: 10,
     borderRadius: 700,
@@ -58,6 +72,18 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
   },
+  topNavBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+  },
+  topBarText: {
+    // color: 'orange',
+  },
+  topBarTitle: {
+    fontWeight: 'bold',
+  },
 });
 
 const textStyles = StyleSheet.create({
@@ -67,6 +93,7 @@ const textStyles = StyleSheet.create({
   titleText: {
     fontSize: 50,
     fontWeight: 'bold',
+    marginBottom: 0,
   },
   buttonText: {
     color: 'white',
@@ -80,4 +107,32 @@ const textStyles = StyleSheet.create({
   },
 });
 
-export { styles, textStyles };
+const settingStyles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 20,
+    marginVertical: 10,
+    borderRadius: 10,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  content: {
+    flexDirection: 'column',
+  },
+  settingText: {
+    fontSize: 20,
+    flex: 1,
+  },
+  controls: {
+    alignItems: 'flex-end',
+  },
+  toggle: {},
+});
+
+export { styles, textStyles, settingStyles };
