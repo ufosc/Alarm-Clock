@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, Platform, Button } from 'react-native';
 import { styles, textStyles } from '../styles';
 import { getDynamicStyles } from '../styles/AlarmStyles';
 import { useDarkMode } from '../contexts/DarkModeContext';
@@ -9,6 +9,7 @@ import SoundPicker from './SoundPicker';
 import SnoozeSwitch from './SnoozeSwitch';
 import TimePickerIOS from './TimePickerIOS';
 import TimePickerAndroid from './TimePickerAndroid';
+import * as Notifications from 'expo-notifications';
 
 function AlarmClock({ onAlarmSave, editingAlarm }) {
   const { isDarkMode } = useDarkMode();
@@ -43,6 +44,8 @@ function AlarmClock({ onAlarmSave, editingAlarm }) {
       isSnoozeEnabled,
       isActive: true,
     };
+    scheduleAlarmNotification(alarmData);
+
     onAlarmSave(alarmData);
 
     // Close the alarm setting modal
@@ -55,6 +58,67 @@ function AlarmClock({ onAlarmSave, editingAlarm }) {
 
   const closeAlarmSetting = () => {
     setAlarmSettingVisible(false);
+  };
+
+  const scheduleAlarmNotification = (alarmData) => {
+    const { id, alarmTime, alarmName, days, isSnoozeEnabled } = alarmData;
+
+    // Format the alarmTime as a string in 'HH:mm' format
+    const formattedAlarmTime = alarmTime.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
+    // Extract hour and minute from the formatted alarm time
+    // const [hour, minute] = formattedAlarmTime.split(':').map(Number);
+
+    const hour = alarmTime.getHours();
+    const minute = alarmTime.getMinutes();
+
+    // Set the trigger for the notification
+    const trigger = {
+      hour,
+      minute,
+      repeats: true, // Repeat the notification daily if needed
+    };
+    console.log('trigger: ', trigger);
+
+    // Prepare notification content
+    const notificationContent = {
+      title: 'Alarm',
+      body: `Time to wake up! ${alarmName}`,
+    };
+
+    // Schedule the notification
+    Notifications.scheduleNotificationAsync({
+      content: notificationContent,
+      trigger,
+    })
+      .then((result) => {
+        console.log(`Notification scheduled for alarm ${id}:`, result);
+      })
+      .catch((error) => {
+        console.error('Error scheduling notification:', error);
+      });
+  };
+
+  const scheduleNotification = () => {
+    // Set the content and trigger for the notification
+    console.log('here');
+    const notificationContent = {
+      title: 'Hello!',
+      body: 'This is a basic Expo notification.',
+    };
+
+    const trigger = {
+      seconds: 5, // Notify after 5 seconds
+    };
+
+    // Schedule the notification
+    Notifications.scheduleNotificationAsync({
+      content: notificationContent,
+      trigger,
+    });
   };
 
   return (
@@ -95,6 +159,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }) {
           <AlarmNameInput alarmName={alarmName} setAlarmName={setAlarmName} />
           <SoundPicker /* pass any props needed */ />
           <SnoozeSwitch isSnoozeEnabled={isSnoozeEnabled} setIsSnoozeEnabled={setIsSnoozeEnabled} />
+          <Button title="Schedule Notification" onPress={scheduleNotification} />
         </View>
       </Modal>
     </View>
