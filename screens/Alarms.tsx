@@ -1,19 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { styles, textStyles } from '../styles';
 import { StatusBar } from 'expo-status-bar';
 import AlarmClock from '../components/AlarmClock';
 import AlarmCard from '../components/AlarmCard';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alarm } from '../types/Alarm';
 
 import { useDarkMode } from '../contexts/DarkModeContext'; // Import the hook
+import { getAlarms } from '../services/store';
 
 export default function Alarms() {
-  const [alarms, setAlarms] = useState<Alarm[]>([]);
+  const [alarms, setAlarms] = useState<any>([]);
   const [selectedAlarm, setSelectedAlarm] = useState<Alarm>();
 
   const { isDarkMode } = useDarkMode();
+
+  const updateAlarms = async () => {
+    // let currentAlarms: any = await getAlarms();
+    let currentAlarms: string = await AsyncStorage.getItem('Alarms');
+    if (currentAlarms != null) {
+      setAlarms(currentAlarms);
+    }
+    // setAlarms(currentAlarms);
+  };
+
+  // Get current Alarms
+  useEffect(() => {
+    updateAlarms();
+  }, [updateAlarms]);
 
   // Define dynamic styles based on isDarkMode
   const dynamicStyles = {
@@ -22,14 +38,20 @@ export default function Alarms() {
   };
 
   // Function to handle saving alarm data
-  const handleSaveAlarm = (alarmData: Alarm) => {
+  const handleSaveAlarm = async (alarmData: any) => {
     if (alarms.some((alarm) => alarm.id === alarmData.id)) {
       // Update existing alarm
       setAlarms(alarms.map((alarm) => (alarm.id === alarmData.id ? alarmData : alarm)));
     } else {
       // Add new alarm
-      setAlarms([...alarms, alarmData]);
+      const alarmDataJson: string = JSON.stringify(alarmData);
+      let currentAlarms: any = await getAlarms();
+      // const updatedAlarms: Alarm[] = [...currentAlarms, alarmData];
+      // await AsyncStorage.setItem('Alarms', JSON.stringify(updatedAlarms));
+      // setAlarms([...alarms, alarmData]);
+      // console.log(alarmData);
     }
+
     // Close modal or navigate back
   };
 
