@@ -31,6 +31,10 @@ export default function Alarms() {
       setAlarms([...alarms, alarmData]);
     }
     // Close modal or navigate back
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 7c440d61059d3373bfde64eefad52d8a3644e54c
   };
 
   const handleDeleteAlarm = (alarmId: number) => {
