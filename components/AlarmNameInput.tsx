@@ -3,7 +3,13 @@ import { View, Text, TextInput } from 'react-native';
 import { useDarkMode } from '../contexts/DarkModeContext';
 import { getDynamicStyles } from '../styles/AlarmStyles';
 
-function AlarmNameInput({ alarmName, setAlarmName }) {
+interface AlarmNameInputProps{
+  alarmName: string;
+  setAlarmName: (name: string) => void;
+}
+
+
+const AlarmNameInput: React.FC<AlarmNameInputProps> = ({ alarmName, setAlarmName }) => {
   const { isDarkMode } = useDarkMode();
   const dynamicStyles = getDynamicStyles(isDarkMode);
 

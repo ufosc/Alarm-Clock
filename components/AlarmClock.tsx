@@ -4,6 +4,7 @@ import { styles, textStyles } from '../styles';
 import { getDynamicStyles } from '../styles/AlarmStyles';
 import { useDarkMode } from '../contexts/DarkModeContext';
 import DayPicker from './DayPicker';
+import {AlarmDays} from '../types/AlarmTypes';
 import AlarmNameInput from './AlarmNameInput';
 import SoundPicker from './SoundPicker';
 import SnoozeSwitch from './SnoozeSwitch';
@@ -11,7 +12,22 @@ import TimePickerIOS from './TimePickerIOS';
 import TimePickerAndroid from './TimePickerAndroid';
 import * as Notifications from 'expo-notifications';
 
-function AlarmClock({ onAlarmSave, editingAlarm }) {
+interface AlarmData{
+  id: number;
+  alarmTime: Date;
+  alarmName: string;
+  days: AlarmDays;
+  isSnoozeEnabled: boolean;
+  isActive: boolean;
+}
+
+interface AlarmClockProps{
+  onAlarmSave: (alarmData: AlarmData) => void;
+  editingAlarm?: AlarmData;
+}
+
+
+function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
   const { isDarkMode } = useDarkMode();
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [alarmTime, setAlarmTime] = useState(new Date());
@@ -30,7 +46,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }) {
   const isEditing = editingAlarm != null;
   const dynamicStyles = getDynamicStyles(isDarkMode);
 
-  const toggleDay = (day) => {
+  const toggleDay = (day: keyof AlarmDays) => {
     setDays({ ...days, [day]: !days[day] });
   };
 

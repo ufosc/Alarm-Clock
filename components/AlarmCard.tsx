@@ -3,14 +3,27 @@ import { View, Text, Switch, TouchableOpacity, Alert } from 'react-native';
 import { getDynamicStyles } from '../styles/AlarmStyles';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
-export default AlarmCard = function ({ alarm, onToggleAlarm, onDelete }) {
+
+interface AlarmCardProps {
+  alarm:{
+    id: string;
+    alarmTime: string;
+    alarmName: string;
+    isActive: boolean;
+  };
+  onToggleAlarm: (id: string) => void;
+  onDelete: (id: string) => void;
+};
+
+const AlarmCard: React.FC<AlarmCardProps> = ({ alarm, onToggleAlarm, onDelete }) => {
+  const { isDarkMode } = useDarkMode();
+  const dynamicStyles = getDynamicStyles(isDarkMode);
+    
   const formattedTime = new Date(alarm.alarmTime).toLocaleTimeString([], {
     hour: '2-digit',
     minute: '2-digit',
     hour12: true,
-  });
-  const dynamicStyles = getDynamicStyles(isDarkMode);
-  const { isDarkMode } = useDarkMode();
+  });  
 
   // shamelessly stolen from react native documentation
   const createTwoButtonAlert = () =>
@@ -40,3 +53,5 @@ export default AlarmCard = function ({ alarm, onToggleAlarm, onDelete }) {
     </View>
   );
 };
+
+export default AlarmCard;

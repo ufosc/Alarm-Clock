@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-function getDynamicStyles(isDarkMode) {
+function getDynamicStyles(isDarkMode: boolean) {
   return StyleSheet.create({
     container: {
       borderBottomColor: isDarkMode ? 'white' : 'grey',

@@ -2,7 +2,13 @@ import React from 'react';
 import { View, Text, Switch } from 'react-native';
 import { settingStyles } from '../styles/index';
 
-function SettingsToggle({ name, value, onValueChange }) {
+interface SettingsToggleProp {
+  name: string;
+  value: boolean;
+  onValueChange: (value: boolean) => void;
+}
+
+const SettingsToggle: React.FC<SettingsToggleProp> = ({ name, value, onValueChange }) => {
   return (
     <View style={settingStyles.container}>
       <View style={settingStyles.content}>
