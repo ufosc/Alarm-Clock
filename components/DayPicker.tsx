@@ -2,8 +2,15 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useDarkMode } from '../contexts/DarkModeContext';
 import { getDynamicStyles } from '../styles/AlarmStyles';
+import AlarmClock from './AlarmClock';
+import { AlarmDays } from '../types/AlarmTypes';
 
-function DayPicker({ days, toggleDay }) {
+interface DayPickerProps {
+  days: AlarmDays;
+  toggleDay: (name: string) => void;
+}
+
+const DayPicker: React.FC<DayPickerProps> = ({ days, toggleDay }) => {
   const { isDarkMode } = useDarkMode();
   const dynamicStyles = getDynamicStyles(isDarkMode);
 

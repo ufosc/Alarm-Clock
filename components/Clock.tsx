@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Switch, View, Text, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import { textStyles, styles } from '../styles/styles';
+import { textStyles, styles } from '../styles';
 
 function AlarmClock() {
   return (

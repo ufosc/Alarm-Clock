@@ -5,7 +5,7 @@ import { styles, textStyles } from '../styles';
 import { StatusBar } from 'expo-status-bar';
 import AlarmClock from '../components/AlarmClock';
 import AlarmCard from '../components/AlarmCard';
-import { Alarm } from '../types/Alarm';
+import { Alarm } from '../types/AlarmTypes';
 
 import { useDarkMode } from '../contexts/DarkModeContext'; // Import the hook
 

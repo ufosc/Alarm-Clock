@@ -3,7 +3,12 @@ import { View, Text, Switch } from 'react-native';
 import { getDynamicStyles } from '../styles/AlarmStyles';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
-function SnoozeSwitch({ isSnoozeEnabled, setIsSnoozeEnabled }) {
+interface SnoozeSwitchProp {
+  isSnoozeEnabled: boolean;
+  setIsSnoozeEnabled: (value: boolean) => void;
+}
+
+const SnoozeSwitch: React.FC<SnoozeSwitchProp> = ({ isSnoozeEnabled, setIsSnoozeEnabled }) => {
   const { isDarkMode } = useDarkMode();
   const dynamicStyles = getDynamicStyles(isDarkMode);
 
