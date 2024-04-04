@@ -7,7 +7,9 @@ function SoundPicker(
   {
     /* pass in any props needed */
   }
-) {
+) 
+
+{
   const { isDarkMode } = useDarkMode();
   const dynamicStyles = getDynamicStyles(isDarkMode);
 
