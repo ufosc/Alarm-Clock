@@ -103,6 +103,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
     const notificationContent = {
       title: 'Alarm',
       body: `Time to wake up! ${alarmName}`,
+      sound: 'Alarm1.wav'
     };
 
     // Schedule the notification
@@ -124,6 +125,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
     const notificationContent = {
       title: 'Hello!',
       body: 'This is a basic Expo notification.',
+      sound: 'Alarm1.wav'
     };
 
     const trigger = {

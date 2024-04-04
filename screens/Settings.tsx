@@ -25,10 +25,10 @@ function Setting() {
 
   const scheduleNotification = () => {
     // Set the content and trigger for the notification
-    console.log('here');
     const notificationContent = {
       title: 'Hello!',
       body: 'This is a basic Expo notification.',
+      sound: 'Alarm1.wav',
     };
 
     const trigger = {
@@ -37,7 +37,11 @@ function Setting() {
 
     // Schedule the notification
     Notifications.scheduleNotificationAsync({
-      content: notificationContent,
+      content: {
+        title: 'Hello!',
+        body: 'This is a basic Expo notification.',
+        sound: 'Alarm1.wav',
+      },
       trigger,
     });
   };
