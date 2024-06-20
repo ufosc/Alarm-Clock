@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, ScrollView, View, TouchableOpacity } from 'react-native';
+import { Text, ScrollView, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 // import AlarmClock from './Alarm';
 import moment from 'moment-timezone';
@@ -23,10 +23,46 @@ export default function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
+    useEffect(() => {
+        // Set the navigation header options based on dark mode
+        navigation.setOptions({
+            headerStyle: {
+                backgroundColor: isDarkMode ? '#333333' : '#F0F0F0',
+            },
+            headerTintColor: isDarkMode ? '#fff' : '#000',
+            headerTitleStyle: {
+                color: isDarkMode ? '#fff' : '#000',
+            },
+        });
+    }, [isDarkMode]);
+
   // Define dynamic styles based on isDarkMode
   const dynamicStyles = {
-    backgroundColor: isDarkMode ? 'darkgrey' : 'white',
+      container: {
+      flex:1,
+      backgroundColor: isDarkMode ? '#121212' : 'white',
+
+    },
+    text: {
+      color: isDarkMode ? 'white' : 'black',
+    },
+    button: {
+      backgroundColor: isDarkMode ? '#333333' : 'lightgreen',
+      color: isDarkMode ? 'white' : 'black',
+    },
+    box: {
+      backgroundColor: isDarkMode ? '#333333' : '#F0F0F0',
+    },
+    deleteButtonText: {
+      color: isDarkMode ? 'red' : 'red',
+    },
+    picker: {
+    backgroundColor: isDarkMode ? '#2C2C2C' : 'white',
     color: isDarkMode ? 'white' : 'black',
+    },
+    pickerItem: {
+    color: isDarkMode ? 'white' : 'black',
+    },
   };
 
   const addNewTimeZone = (zone: string) => {
@@ -43,9 +79,10 @@ export default function Home() {
     setModalVisible(!modalVisible);
   };
 
-  return (
-    <ScrollView style={[styles.container, { backgroundColor: dynamicStyles.backgroundColor }]}>
-      <Text style={{ ...textStyles.titleText, padding: 20, color: dynamicStyles.color }}>
+    return (
+      < SafeAreaView style = { dynamicStyles.container } >
+      <ScrollView style={[styles.container, dynamicStyles.container]}>
+          <Text style={[textStyles.titleText, { padding: 20 }, dynamicStyles.text]}>
         World Clock
       </Text>
 
@@ -59,7 +96,7 @@ export default function Home() {
               addNewTimeZone(selectedTimeZone); // Add the selected time zone
             }
           }}
-          style={styles.button}
+          style={[styles.button, dynamicStyles.button]}
         >
           <Text style={textStyles.buttonText}>
             {modalVisible ? 'Confirm Clock' : 'Add New World Clock'}
@@ -67,7 +104,8 @@ export default function Home() {
         </TouchableOpacity>
         {modalVisible && (
           <Picker
-            // style={styles.picker}: Unused style
+            style={[dynamicStyles.picker]}
+            itemStyle={[dynamicStyles.pickerItem]}
             selectedValue={selectedTimeZone}
             onValueChange={(itemValue) => {
               setSelectedTimeZone(itemValue);
@@ -84,14 +122,14 @@ export default function Home() {
         {screenClock.map((zone, index) => (
           <View
             key={index}
-            style={[styles.time, { backgroundColor: dynamicStyles.backgroundColor }]}
+                style={[styles.time, dynamicStyles.box]}
           >
-            <Text style={{ ...styles.buttonText, color: dynamicStyles.color }}>{zone}</Text>
-            <TouchableOpacity onPress={() => removeTimeZone(index)} style={styles.deleteButton}>
-              <Text style={styles.deleteButtonText}>Delete</Text>
+                <Text style={[styles.buttonText, dynamicStyles.text]}>{zone}</Text>
+                <TouchableOpacity onPress={() => removeTimeZone(index)} style={[styles.deleteButton, dynamicStyles.deleteButton]}>
+                    <Text style={dynamicStyles.deleteButtonText}>Delete</Text>
             </TouchableOpacity>
-            <View style={[styles.box, { backgroundColor: dynamicStyles.backgroundColor }]}>
-              <Text style={{ ...styles.time, color: dynamicStyles.color }}>
+            <View style={[styles.box, dynamicStyles.box]}>
+              <Text style={[styles.time, dynamicStyles.text]}>
                 {moment().tz(zone).format('hh:mm:ss A')}
               </Text>
             </View>
@@ -100,6 +138,7 @@ export default function Home() {
       </View>
 
       <View style={{ height: 200 }} />
-    </ScrollView>
+            </ScrollView>
+        </ SafeAreaView>
   );
 }
