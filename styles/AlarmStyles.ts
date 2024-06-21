@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 function getDynamicStyles(isDarkMode: boolean) {
   return StyleSheet.create({
     container: {
-      borderBottomColor: isDarkMode ? 'white' : 'grey',
-      backgroundColor: isDarkMode ? '#333' : 'white',
+      borderBottomColor: isDarkMode ? '#1212' : 'white',
+      backgroundColor: isDarkMode ? '#1212' : 'white',
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
