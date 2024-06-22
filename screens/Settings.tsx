@@ -51,7 +51,7 @@ function Setting() {
 
   const { isDarkMode, toggleSwitch } = useDarkMode();
 
-  const backgroundColor = isDarkMode ? 'darkgrey' : 'white';
+  const backgroundColor = isDarkMode ? '#000000' : 'white';
   const textColor = isDarkMode ? 'white' : 'black';
 
   return (
