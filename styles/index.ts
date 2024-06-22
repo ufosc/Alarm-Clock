@@ -1,13 +1,109 @@
+// styles.js
 import { StyleSheet, Dimensions } from 'react-native';
-import * as AlarmStyles from './AlarmStyles';
+
+const getDynamicStyles = (isDarkMode) => {
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: isDarkMode ? '#000000' : '#fff', // Use pure black for dark mode
+      padding: 20,
+      paddingBottom: 5,
+      marginTop: 20,
+    },
+    button: {
+      backgroundColor: 'lightgreen',
+      paddingVertical: 15,
+      paddingHorizontal: 30,
+      borderRadius: 5,
+      marginBottom: 50,
+    },
+    deleteButtonText: {
+      color: 'red',
+      fontSize: 14,
+    },
+    box: {
+      width: 300,
+      height: 100,
+      backgroundColor: isDarkMode ? '#333' : 'white', // Adjust color for dark mode
+      padding: 30,
+      margin: 10,
+      borderRadius: 700,
+      borderWidth: 2,
+      borderColor: 'green',
+      alignItems: 'center',
+    },
+    alarmTimeBox: {
+      backgroundColor: isDarkMode ? 'blue' : 'lightblue', // Adjust color for dark mode
+      padding: 10,
+      borderRadius: 700,
+      borderWidth: 2,
+      borderColor: 'green',
+      alignItems: 'center',
+    },
+    time: {
+      fontWeight: 'bold',
+      fontSize: 30,
+      color: 'green',
+    },
+    tab: {
+      backgroundColor: isDarkMode ? 'darkgray' : 'gray',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: 20,
+      paddingBottom: 40,
+    },
+    page: {
+      width: Dimensions.get('window').width,
+      height: Dimensions.get('window').height,
+    },
+    topNavBar: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: 16,
+    },
+    topBarText: {
+      color: isDarkMode ? 'white' : 'black',
+    },
+    topBarTitle: {
+      fontWeight: 'bold',
+      color: isDarkMode ? 'white' : 'black',
+    },
+    card: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      backgroundColor: isDarkMode ? '#333' : 'white', // Adjust color for dark mode
+      padding: 20,
+      marginVertical: 10,
+      borderRadius: 8,
+      borderColor: isDarkMode ? 'lightgray' : 'gray',
+      elevation: 3,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+    },
+    name: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginTop: 5,
+      color: isDarkMode ? 'white' : 'black',
+    },
+    time: {
+      fontSize: 24,
+      color: isDarkMode ? 'lightgray' : 'black',
+    },
+  });
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
     padding: 20,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     paddingBottom: 5,
     marginTop: 20,
   },
@@ -26,10 +122,8 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   deleteButtonText: {
-    // Define your styles here
-    color: 'red', // Example: Makes the text color red
-    fontSize: 14, // Example: Sets the font size to 20
-    // Add other styling properties as needed
+    color: 'red',
+    fontSize: 14,
   },
   box: {
     width: 300,
@@ -43,18 +137,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   alarmTimeBox: {
-    // width: 300,
-    // height: 100,
     backgroundColor: 'blue',
     padding: 10,
-    // margin: 10,
     borderRadius: 700,
     borderWidth: 2,
     borderColor: 'green',
     alignItems: 'center',
   },
   time: {
-    // padding: 80,
     fontWeight: 'bold',
     fontSize: 30,
     color: 'green',
@@ -79,7 +169,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   topBarText: {
-    // color: 'orange',
+    color: 'orange',
   },
   topBarTitle: {
     fontWeight: 'bold',
@@ -135,4 +225,4 @@ const settingStyles = StyleSheet.create({
   toggle: {},
 });
 
-export { styles, textStyles, settingStyles };
+export { styles, textStyles, settingStyles, getDynamicStyles };

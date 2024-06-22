@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { Switch, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, ScrollView, StatusBar } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import { styles, textStyles } from '../styles';
-import { StatusBar } from 'expo-status-bar';
+import { getDynamicStyles } from '../styles'; // Import the dynamic styles
 import AlarmClock from '../components/AlarmClock';
 import AlarmCard from '../components/AlarmCard';
 import { Alarm } from '../types/AlarmTypes';
-
 import { useDarkMode } from '../contexts/DarkModeContext'; // Import the hook
 
 export default function Alarms() {
@@ -15,11 +13,8 @@ export default function Alarms() {
 
   const { isDarkMode } = useDarkMode();
 
-  // Define dynamic styles based on isDarkMode
-  const dynamicStyles = {
-    backgroundColor: isDarkMode ? 'darkgrey' : 'white',
-    color: isDarkMode ? 'white' : 'black',
-  };
+  // Get dynamic styles based on isDarkMode
+  const dynamicStyles = getDynamicStyles(isDarkMode);
 
   // Function to handle saving alarm data
   const handleSaveAlarm = (alarmData: Alarm) => {
@@ -52,32 +47,27 @@ export default function Alarms() {
     setSelectedAlarm(alarm);
   };
 
-  const containerStyle = isDarkMode
-    ? styles.darkContainer
-    : { ...styles.container, ...{ marginTop: 10 } }; // Adjust as necessary for dark mode
-  const buttonTextStyle = isDarkMode
-    ? { ...textStyles.buttonText, color: 'white' }
-    : textStyles.buttonText;
-
   return (
-    <ScrollView>
-      <Text style={{ ...textStyles.titleText, padding: 20, color: dynamicStyles.color }}>
-        Alarm Clock
-      </Text>
+    <View style={dynamicStyles.container}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={isDarkMode ? '#000000' : '#ffffff'} // Set the correct background color
+      />
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <Text style={[dynamicStyles.topBarTitle, { padding: 20 }]}>Alarm Clock</Text>
 
-      <AlarmClock editingAlarm={selectedAlarm} onAlarmSave={handleSaveAlarm} />
+        <AlarmClock editingAlarm={selectedAlarm} onAlarmSave={handleSaveAlarm} />
 
-      {/* Render a list of AlarmCards */}
-      {alarms.map((alarm) => (
-        <AlarmCard
-          key={alarm.id}
-          alarm={alarm}
-          onToggleAlarm={handleToggleAlarm}
-          onDelete={handleDeleteAlarm}
-        />
-      ))}
-
-      <StatusBar />
-    </ScrollView>
+        {/* Render a list of AlarmCards */}
+        {alarms.map((alarm) => (
+          <AlarmCard
+            key={alarm.id}
+            alarm={alarm}
+            onToggleAlarm={handleToggleAlarm}
+            onDelete={handleDeleteAlarm}
+          />
+        ))}
+      </ScrollView>
+    </View>
   );
 }
