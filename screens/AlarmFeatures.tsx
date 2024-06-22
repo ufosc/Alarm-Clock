@@ -1,21 +1,22 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import { View, Text, StatusBar, SafeAreaView, StyleSheet } from 'react-native';
 import { useDarkMode } from '../contexts/DarkModeContext';
-import { styles, textStyles } from '../styles';
+import { getDynamicStyles } from '../styles'; // Import the dynamic styles
 
 function AlarmFeatures() {
   const { isDarkMode } = useDarkMode();
 
-  // Define dynamic styles based on isDarkMode
-  const containerStyle = isDarkMode ? styles.darkContainer : styles.container;
-  const textStyle = isDarkMode ? { color: 'white' } : { color: 'black' };
+  // Get dynamic styles based on isDarkMode
+  const dynamicStyles = getDynamicStyles(isDarkMode);
 
   return (
-    <View style={containerStyle}>
-      <Text style={[textStyles.titleText, textStyle]}>Alarm Features</Text>
-      <StatusBar style={isDarkMode ? 'light' : 'dark'} />
-    </View>
+    <SafeAreaView style={dynamicStyles.container}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <View style={StyleSheet.absoluteFill}>
+        <Text style={[dynamicStyles.topBarTitle, { padding: 20 }]}>Alarm Features</Text>
+        {/* Add your Alarm Features component content here */}
+      </View>
+    </SafeAreaView>
   );
 }
 
