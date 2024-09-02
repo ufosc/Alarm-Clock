@@ -24,6 +24,6 @@ const SnoozeSwitch: React.FC<SnoozeSwitchProp> = ({ isSnoozeEnabled, setIsSnooze
       />
     </View>
   );
-}
+};
 
 export default SnoozeSwitch;

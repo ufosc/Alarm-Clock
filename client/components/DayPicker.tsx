@@ -29,6 +29,6 @@ const DayPicker: React.FC<DayPickerProps> = ({ days, toggleDay }) => {
       ))}
     </View>
   );
-}
+};
 
 export default DayPicker;

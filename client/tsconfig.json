@@ -3,5 +3,5 @@
   "compilerOptions": {
     "strict": false
   },
-  "include": ["**/*.ts", "**/*.tsx", "components/AlarmClock.tsx"]
+  "include": ["**/*.ts", "**/*.tsx", "src/components/AlarmClock.tsx"]
 }

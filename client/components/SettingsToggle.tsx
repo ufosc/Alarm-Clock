@@ -19,5 +19,5 @@ const SettingsToggle: React.FC<SettingsToggleProp> = ({ name, value, onValueChan
       </View>
     </View>
   );
-}
+};
 export default SettingsToggle;
