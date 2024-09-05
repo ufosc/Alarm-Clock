@@ -43,7 +43,7 @@ git clone https://github.com/malangadan/Alarm-Clock.git
 Navigate to the project directory and install the project dependencies:
 
 ```
-cd Alarm-Clock
+cd  Alarm-Clock/client
 npm install
 ```
 
