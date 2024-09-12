@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Text, ScrollView, View, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 // import AlarmClock from './Alarm';
-import moment from 'moment-timezone';
 import { Picker } from '@react-native-picker/picker';
 import { styles, textStyles } from '../styles/index';
 import { useDarkMode } from '../contexts/DarkModeContext';
+import { timeZones, type TimeZone } from '../constants/timezones';
 
 export default function Home() {
   const { isDarkMode } = useDarkMode(); // Use the hook
-  const navigation = useNavigation();
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [selectedTimeZone, setSelectedTimeZone] = useState(moment.tz.guess());
-  const [screenClock, setScreenClock] = useState<string[]>([]);
+  const [selectedTimeZone, setSelectedTimeZone] = useState(
+    Intl.DateTimeFormat().resolvedOptions().timeZone
+  );
+  const [screenClock, setScreenClock] = useState<TimeZone[]>([]);
   const [modalVisible, setModalVisible] = useState(false);
-  const timeZones = moment.tz.names();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -29,7 +28,7 @@ export default function Home() {
     color: isDarkMode ? 'white' : 'black',
   };
 
-  const addNewTimeZone = (zone: string) => {
+  const addNewTimeZone = (zone: TimeZone) => {
     if (!screenClock.includes(zone)) {
       setScreenClock([...screenClock, zone]);
     }
@@ -41,6 +40,16 @@ export default function Home() {
 
   const showTimeZonePicker = () => {
     setModalVisible(!modalVisible);
+  };
+
+  const formatDate = (date: Date, timeZone: TimeZone) => {
+    return new Intl.DateTimeFormat('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+      timeZone: timeZone,
+    }).format(date);
   };
 
   return (
@@ -56,7 +65,7 @@ export default function Home() {
           onPress={() => {
             showTimeZonePicker();
             if (modalVisible) {
-              addNewTimeZone(selectedTimeZone); // Add the selected time zone
+              addNewTimeZone(selectedTimeZone as TimeZone); // Add the selected time zone
             }
           }}
           style={styles.button}
@@ -92,7 +101,7 @@ export default function Home() {
             </TouchableOpacity>
             <View style={[styles.box, { backgroundColor: dynamicStyles.backgroundColor }]}>
               <Text style={{ ...styles.time, color: dynamicStyles.color }}>
-                {moment().tz(zone).format('hh:mm:ss A')}
+                {formatDate(currentTime, zone)}
               </Text>
             </View>
           </View>
