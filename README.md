@@ -40,10 +40,10 @@ If you **do not** intend on making any changes, clone the original repository:
 git clone https://github.com/ufosc/Alarm-Clock.git
 ```
 
-If you **do** intend on making changes, fork the project then copy the code from your personal repository. It will be similar to the code below: (... is usually replaced by your GitHub username)
+If you **do** intend on making changes, fork the project then copy the code from your personal repository:: 
 
 ```
-git clone https://github.com/.../Alarm-Clock.git
+git clone https://github.com/YOUR-USERNAME/Alarm-Clock.git
 ```
 
 
