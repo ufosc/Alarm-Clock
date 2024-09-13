@@ -34,11 +34,18 @@ sudo apt install build-essential
 xcode-select --install
 ```
 
-Then, begin by cloning the repository:
+If you **do not** intend on making any changes, clone the original repository:
 
 ```
-git clone https://github.com/malangadan/Alarm-Clock.git
+git clone https://github.com/ufosc/Alarm-Clock.git
 ```
+
+If you **do** intend on making changes, fork the project then copy the code from your personal repository:: 
+
+```
+git clone https://github.com/YOUR-USERNAME/Alarm-Clock.git
+```
+
 
 Navigate to the project directory and install the project dependencies:
 
