@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, Platform, Button } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, Platform, Button, SafeAreaView } from 'react-native';
 import { styles, textStyles } from '../styles';
 import { getDynamicStyles } from '../styles/AlarmStyles';
 import { useDarkMode } from '../contexts/DarkModeContext';
@@ -147,8 +147,9 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
         visible={isAlarmSettingVisible}
         onRequestClose={closeAlarmSetting}
         style={dynamicStyles.modalContainer}
+        presentationStyle='pageSheet'
       >
-        <View style={{ flex: 1, paddingTop: 22 }}>
+        <SafeAreaView style={{ flex: 1, paddingTop: 22 }}>
           <View style={dynamicStyles.topNavBar}>
             <TouchableOpacity onPress={closeAlarmSetting}>
               <Text style={dynamicStyles.topBarText}>Cancel</Text>
@@ -175,7 +176,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
           <SoundPicker /* pass any props needed */ />
           <SnoozeSwitch isSnoozeEnabled={isSnoozeEnabled} setIsSnoozeEnabled={setIsSnoozeEnabled} />
           <Button title="Schedule Notification" onPress={scheduleNotification} />
-        </View>
+        </SafeAreaView>
       </Modal>
     </View>
   );
