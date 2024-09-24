@@ -1,5 +1,5 @@
-export interface Alarm {
-  id: string; // ID returned by Notifications.scheduleNotifcationAsync is a String
+export interface AlarmNotification {
+  id: string; // ID returned by Notifications.scheduleNotifcationAsync is a string
   isActive?: boolean;
 }
 
