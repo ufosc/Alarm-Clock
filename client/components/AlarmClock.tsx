@@ -13,7 +13,7 @@ import TimePickerAndroid from './TimePickerAndroid';
 import * as Notifications from 'expo-notifications';
 
 interface AlarmData {
-  id: number;
+  id: string;
   alarmTime: Date;
   alarmName: string;
   days: AlarmDays;
@@ -51,7 +51,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
 
   const saveAlarm = () => {
     const alarmData = {
-      id: isEditing ? editingAlarm.id : Date.now(), // Use the existing ID or generate a new one
+      id: isEditing ? editingAlarm.id : '', // Use empty string to indicate that this is a new alarm that needs an ID
       alarmTime,
       alarmName,
       days,
@@ -75,65 +75,75 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
     setAlarmSettingVisible(false);
   };
 
-  const scheduleAlarmNotification = (alarmData) => {
-    const { id, alarmTime, alarmName, days, isSnoozeEnabled } = alarmData;
+  const scheduleAlarmNotification = async (alarmData: AlarmData) => {
+    try {
+      const { id, alarmTime, alarmName, days, isSnoozeEnabled } = alarmData;
 
-    // Format the alarmTime as a string in 'HH:mm' format
-    const formattedAlarmTime = alarmTime.toLocaleTimeString('en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-
-    // Extract hour and minute from the formatted alarm time
-    // const [hour, minute] = formattedAlarmTime.split(':').map(Number);
-
-    const hour = alarmTime.getHours();
-    const minute = alarmTime.getMinutes();
-
-    // Set the trigger for the notification
-    const trigger = {
-      hour,
-      minute,
-      repeats: true, // Repeat the notification daily if needed
-    };
-    console.log('trigger: ', trigger);
-
-    // Prepare notification content
-    const notificationContent = {
-      title: 'Alarm',
-      body: `Time to wake up! ${alarmName}`,
-    };
-
-    // Schedule the notification
-    Notifications.scheduleNotificationAsync({
-      content: notificationContent,
-      trigger,
-    })
-      .then((result) => {
-        console.log(`Notification scheduled for alarm ${id}:`, result);
-      })
-      .catch((error) => {
-        console.error('Error scheduling notification:', error);
+      // Format the alarmTime as a string in 'HH:mm' format
+      const formattedAlarmTime = alarmTime.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
       });
+
+      // Extract hour and minute from the formatted alarm time
+      // const [hour, minute] = formattedAlarmTime.split(':').map(Number);
+
+      const hour = alarmTime.getHours();
+      const minute = alarmTime.getMinutes();
+
+      // Set the trigger for the notification
+      const trigger = {
+        hour,
+        minute,
+        repeats: true, // Repeat the notification daily if needed
+      };
+      console.log('trigger: ', trigger);
+
+      // Prepare notification content
+      const notificationContent = {
+        title: 'Alarm',
+        body: `Time to wake up! ${alarmName}`,
+      };
+
+      // Schedule the notification
+      const notificationID = await Notifications.scheduleNotificationAsync({
+        content: notificationContent,
+        trigger: trigger,
+      });
+
+      // Update the alarm ID if it is not defined already
+      if (!id)
+        alarmData.id = notificationID;
+
+      console.log(`Notification scheduled for alarm ${notificationID}`);
+
+    } catch (error) {
+      console.error('Error scheduling notification:', error);
+    }
   };
 
-  const scheduleNotification = () => {
-    // Set the content and trigger for the notification
-    console.log('here');
-    const notificationContent = {
-      title: 'Hello!',
-      body: 'This is a basic Expo notification.',
-    };
+  const scheduleNotification = async () => {
+    try {
+      // Set the content and trigger for the notification
+      console.log('here');
+      const notificationContent = {
+        title: 'Hello!',
+        body: 'This is a basic Expo notification.',
+      };
 
-    const trigger = {
-      seconds: 5, // Notify after 5 seconds
-    };
+      const trigger = {
+        seconds: 5, // Notify after 5 seconds
+      };
 
-    // Schedule the notification
-    Notifications.scheduleNotificationAsync({
-      content: notificationContent,
-      trigger,
-    });
+      // Schedule the notification
+      const result = await Notifications.scheduleNotificationAsync({
+        content: notificationContent,
+        trigger: trigger,
+      });
+
+    } catch (error) {
+      console.error('Error scheduling notification:', error);
+    }
   };
 
   return (
