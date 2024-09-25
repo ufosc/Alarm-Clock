@@ -1,4 +1,4 @@
-export interface AlarmNotification {
+export interface Alarm {
   id: string; // ID returned by Notifications.scheduleNotifcationAsync is a string
   isActive?: boolean;
 }
