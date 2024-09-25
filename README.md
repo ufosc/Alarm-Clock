@@ -11,22 +11,27 @@
 <br/>
 Welcome to the UF Alarm Clock Project! This innovative alarm clock is designed to revolutionize your mornings by incorporating unique features to ensure you wake up on time and stay alert.
 
+![Alarms](https://github.com/user-attachments/assets/2bd6fc08-7ef1-49ab-bbcd-ae1ad0ae9121)
+![Word Clock](https://github.com/user-attachments/assets/51b4c49e-3650-473b-881f-681e7d01a2aa)
+
 ## 🚀 Goal
 
 The goal of the UF Alarm Clock project is to create an alarm clock that not only emulates all the features of a traditional alarm clock but also introduces novel functionalities to make waking up a more effective and engaging experience. Our aim is to provide users with the ability to configure various punishments for not waking up and implement innovative methods for detecting if a user is awake, thereby promoting better sleep habits and ensuring timely awakenings.
 
 ## Table of Contents
 
-- [UF Alarm Clock](#uf-alarm-clock)
-- [Table of Contents](#table-of-contents)
-- [Installation](#installation)
-- [Contributing](#contributing)
-- [Resources](#resources)
-- [Maintainers](#maintainers)
+-   [UF Alarm Clock](#uf-alarm-clock)
+-   [Table of Contents](#table-of-contents)
+-   [Installation](#installation)
+-   [Contributing](#contributing)
+-   [Resources](#resources)
+-   [Maintainers](#maintainers)
 
 ## 📥 Installation
 
-This project requires [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com). Also, the [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&gl=US) app is required on a mobile device. Make sure you have `build-essential` (Linux) or `xcode-select` (MacOS).
+This project requires [NodeJS](https://nodejs.org/en/), [Git](https://git-scm.com), and [Golang](https://go.dev/). Also, the [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&gl=US) app is required on a mobile device. Make sure you have `build-essential` (Linux) or `xcode-select` (MacOS).
+
+### Client
 
 ```
 sudo apt install build-essential
@@ -40,14 +45,13 @@ If you **do not** intend on making any changes, clone the original repository:
 git clone https://github.com/ufosc/Alarm-Clock.git
 ```
 
-If you **do** intend on making changes, fork the project then copy the code from your personal repository:: 
+If you **do** intend on making changes, fork the project then copy the code from your personal repository::
 
 ```
 git clone https://github.com/YOUR-USERNAME/Alarm-Clock.git
 ```
 
-
-Navigate to the project directory and install the project dependencies:
+Navigate to the project client directory and install the project dependencies:
 
 ```
 cd  Alarm-Clock/client
@@ -67,6 +71,27 @@ npm run tunnel
 ```
 
 Then scan the QR code that appears on the expo go app.
+
+### Server
+
+Install Golang version 1.23.1
+
+```
+go install golang.org/dl/go1.23.1@latest
+go1.23.1 download
+```
+
+Navigate to the project server directory
+
+```
+cd Alarm-Clock/server
+```
+
+Run server
+
+```
+go1.23.1 run ./server.go
+```
 
 ## 🤝 Contributing
 
@@ -90,11 +115,11 @@ To contribute to this repository, please follow the following steps:
 
 For more help use the following links:
 
-- [Fork and Clone repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
-- [Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
-- [Comitting to Repository](https://www.atlassian.com/git/tutorials/saving-changes/git-commit#:~:text=Commits%20can%20be%20thought%20of,committed%20to%20the%20local%20repository.)
-- [Pushing to Repository](https://github.com/git-guides/git-push)
-- [Opening Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
+-   [Fork and Clone repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+-   [Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
+-   [Comitting to Repository](https://www.atlassian.com/git/tutorials/saving-changes/git-commit#:~:text=Commits%20can%20be%20thought%20of,committed%20to%20the%20local%20repository.)
+-   [Pushing to Repository](https://github.com/git-guides/git-push)
+-   [Opening Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
 ## 🧑‍💼 Maintainers
 
@@ -102,5 +127,5 @@ Maintained by the UF Open Source Club, can be contacted via [Discord](https://di
 
 Current Maintainers:
 
-- Kaniel Vicencio @kanielv
-- Max Meiler @MaximilianMeiler
+-   Kaniel Vicencio @kanielv
+-   Max Meiler @MaximilianMeiler
