@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import AlarmClock from '../components/AlarmClock';
 import AlarmCard from '../components/AlarmCard';
 import { Alarm } from '../types/AlarmTypes';
+import * as Notifications from 'expo-notifications'; // For Notifications.cancelScheduledNotificationAsync
 
 import { useDarkMode } from '../contexts/DarkModeContext'; // Import the hook
 
@@ -33,11 +34,27 @@ export default function Alarms() {
     // Close modal or navigate back
   };
 
-  const handleDeleteAlarm = (alarmId: number) => {
-    setAlarms(alarms.filter((alarm: Alarm) => alarm.id !== alarmId));
+  const handleDeleteAlarm = async (alarmId: string) => {
+    try {
+      // Assuming 'alarms' is your current alarm state
+      const alarmToDelete = alarms.find((alarm: Alarm) => alarm.id === alarmId);
+
+      // Cancel the scheduled notification for the alarm being deleted
+      if (alarmToDelete && alarmToDelete.id) {
+        await Notifications.cancelScheduledNotificationAsync(alarmToDelete.id);
+        console.log(`Notification for alarm ${alarmId} has been canceled.`);
+      }
+
+      // Filter out the alarm with the matching ID
+      setAlarms(alarms.filter((alarm: Alarm) => alarm.id !== alarmId));
+
+      console.log(`Alarm with ID ${alarmId} has been deleted.`);
+    } catch (error) {
+      console.error('Error deleting alarm:', error);
+    }
   };
 
-  const handleToggleAlarm = (alarmId: number): void => {
+  const handleToggleAlarm = (alarmId: string): void => {
     setAlarms(
       alarms.map((alarm) => {
         if (alarm.id === alarmId) {
