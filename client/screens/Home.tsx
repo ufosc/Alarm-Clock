@@ -5,6 +5,7 @@ import { Picker } from '@react-native-picker/picker';
 import { styles, textStyles } from '../styles/index';
 import { useDarkMode } from '../contexts/DarkModeContext';
 import { timeZones, type TimeZone } from '../constants/timezones';
+import { getDynamicStyles } from '../styles/AlarmStyles';
 
 export default function Home() {
   const { isDarkMode } = useDarkMode(); // Use the hook
@@ -14,6 +15,7 @@ export default function Home() {
   );
   const [screenClock, setScreenClock] = useState<TimeZone[]>([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const alarmDynamicStyles = getDynamicStyles(isDarkMode);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -46,7 +48,6 @@ export default function Home() {
     return new Intl.DateTimeFormat('en-US', {
       hour: '2-digit',
       minute: '2-digit',
-      second: '2-digit',
       hour12: true,
       timeZone: timeZone,
     }).format(date);
@@ -93,17 +94,22 @@ export default function Home() {
         {screenClock.map((zone, index) => (
           <View
             key={index}
-            style={[styles.time, { backgroundColor: dynamicStyles.backgroundColor }]}
+            style={[alarmDynamicStyles.card, { backgroundColor: dynamicStyles.backgroundColor }]}
           >
-            <Text style={{ ...styles.buttonText, color: dynamicStyles.color }}>{zone}</Text>
-            <TouchableOpacity onPress={() => removeTimeZone(index)} style={styles.deleteButton}>
-              <Text style={styles.deleteButtonText}>Delete</Text>
-            </TouchableOpacity>
-            <View style={[styles.box, { backgroundColor: dynamicStyles.backgroundColor }]}>
-              <Text style={{ ...styles.time, color: dynamicStyles.color }}>
-                {formatDate(currentTime, zone)}
-              </Text>
+            <View style={[alarmDynamicStyles.content]}>
+              <Text style={{ ...textStyles.clockHeadingText, color: dynamicStyles.color }}>{zone.split("/").pop().replace('_', ' ')}</Text>
+              {/*emulates same style as the alarm page with empty text at the bottom to pad it out, not the smartest but makes it consistent*/}
+              <Text style={{ ...textStyles.clockHeadingText, color: dynamicStyles.color }}>{'         '}</Text>
+
             </View>
+              <View style={[alarmDynamicStyles.controls, { backgroundColor: dynamicStyles.backgroundColor }]}>
+                <Text style={{ ...alarmDynamicStyles.time, color: dynamicStyles.color }}>
+                  {formatDate(currentTime, zone)}
+                </Text>
+                <TouchableOpacity onPress={() => removeTimeZone(index)} style={[alarmDynamicStyles.deleteButton, { backgroundColor: dynamicStyles.backgroundColor }]}>
+                <Text style={styles.deleteButtonText}>Delete</Text>
+              </TouchableOpacity>
+              </View>
           </View>
         ))}
       </View>

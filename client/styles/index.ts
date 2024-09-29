@@ -84,6 +84,11 @@ const styles = StyleSheet.create({
   topBarTitle: {
     fontWeight: 'bold',
   },
+  worldClock: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  }
 });
 
 const textStyles = StyleSheet.create({
@@ -104,6 +109,11 @@ const textStyles = StyleSheet.create({
     alignSelf: 'flex-start',
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  clockHeadingText: {
+    fontSize: 24,
+    color: 'black',
+    textAlign: 'left',
   },
 });
 
