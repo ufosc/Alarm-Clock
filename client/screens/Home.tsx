@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, ScrollView, View, TouchableOpacity } from 'react-native';
+import { Text, ScrollView, View, TouchableOpacity, Alert } from 'react-native';
 // import AlarmClock from './Alarm';
 import { Picker } from '@react-native-picker/picker';
 import { styles, textStyles } from '../styles/index';
@@ -35,7 +35,12 @@ export default function Home() {
   };
 
   const removeTimeZone = (index: number) => {
-    setScreenClock((screenClock) => screenClock.filter((_, i) => i !== index));
+    Alert.alert('Confirm deletion', 'Are you sure you want to delete this clock?', [
+      {
+        text: 'Cancel',
+      },
+      { text: 'OK', onPress: () => setScreenClock((screenClock) => screenClock.filter((_, i) => i !== index)) },
+    ]);
   };
 
   const showTimeZonePicker = () => {
