@@ -4,7 +4,7 @@ function getDynamicStyles(isDarkMode: boolean) {
   return StyleSheet.create({
     container: {
       borderBottomColor: isDarkMode ? 'white' : 'grey',
-      backgroundColor: isDarkMode ? '#333' : 'white',
+      backgroundColor: isDarkMode ? 'darkgrey' : 'white',
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',

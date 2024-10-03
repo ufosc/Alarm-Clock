@@ -95,6 +95,10 @@ const textStyles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 0,
   },
+  subtitleText: {
+    fontSize: 35,
+    marginBottom: 0
+  },
   buttonText: {
     color: 'white',
     fontSize: 20,
