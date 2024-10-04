@@ -23,19 +23,29 @@ export default function Alarms() {
   // Function to handle saving alarm data
   const handleSaveAlarm = (alarmData: Alarm) => {
     if (alarms.some((alarm) => alarm.id === alarmData.id)) {
+      // Update existing alarm
       setAlarms(alarms.map((alarm) => (alarm.id === alarmData.id ? alarmData : alarm)));
     } else {
+      // Add new alarm
       setAlarms([...alarms, alarmData]);
     }
+    // Close modal or navigate back
   };
 
   const handleDeleteAlarm = async (alarmId: string) => {
     try {
+      // Assuming 'alarms' is your current alarm state
       const alarmToDelete = alarms.find((alarm: Alarm) => alarm.id === alarmId);
+
+      // Cancel the scheduled notification for the alarm being deleted
       if (alarmToDelete && alarmToDelete.id) {
         await Notifications.cancelScheduledNotificationAsync(alarmToDelete.id);
       }
+
+      // Filter out the alarm with the matching ID
       setAlarms(alarms.filter((alarm: Alarm) => alarm.id !== alarmId));
+
+      console.log(`Alarm with ID ${alarmId} has been deleted.`);
     } catch (error) {
       console.error('Error deleting alarm:', error);
     }

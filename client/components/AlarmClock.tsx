@@ -85,20 +85,24 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
       const trigger = {
         hour,
         minute,
-        repeats: true,
+        repeats: true, // Repeat the notification daily if needed
       };
 
+      // Prepare notification content
       const notificationContent = {
         title: 'Alarm',
         body: `Time to wake up! ${alarmName}`,
       };
 
+       // Schedule the notification
       const notificationID = await Notifications.scheduleNotificationAsync({
         content: notificationContent,
         trigger: trigger,
       });
 
-      if (!id) alarmData.id = notificationID;
+      // Update the alarm ID if it is not defined already
+      if (!id)
+        alarmData.id = notificationID;
 
       console.log(`Notification scheduled for alarm ${notificationID}`);
     } catch (error) {
@@ -108,15 +112,17 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
 
   const scheduleNotification = async () => {
     try {
+      // Set the content and trigger for the notification
       const notificationContent = {
         title: 'Hello!',
         body: 'This is a basic Expo notification.',
       };
 
       const trigger = {
-        seconds: 5,
+        seconds: 5, // Notify after 5 seconds
       };
 
+      // Schedule the notification
       await Notifications.scheduleNotificationAsync({
         content: notificationContent,
         trigger: trigger,
