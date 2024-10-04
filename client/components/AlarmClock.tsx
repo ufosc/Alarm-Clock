@@ -59,7 +59,10 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
       isActive: true,
     };
     scheduleAlarmNotification(alarmData);
+
     onAlarmSave(alarmData);
+
+    // Close the alarm setting modal
     closeAlarmSetting();
   };
 
@@ -82,6 +85,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
       const hour = alarmTime.getHours();
       const minute = alarmTime.getMinutes();
 
+      // Set the trigger for the notification
       const trigger = {
         hour,
         minute,
@@ -94,7 +98,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
         body: `Time to wake up! ${alarmName}`,
       };
 
-       // Schedule the notification
+      // Schedule the notification
       const notificationID = await Notifications.scheduleNotificationAsync({
         content: notificationContent,
         trigger: trigger,
