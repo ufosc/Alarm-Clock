@@ -26,6 +26,7 @@ export default function Home() {
   const dynamicStyles = {
     backgroundColor: isDarkMode ? 'darkgrey' : 'white',
     color: isDarkMode ? 'white' : 'black',
+    buttonColor: isDarkMode ? 'dimgrey' : 'white',
   };
 
   const addNewTimeZone = (zone: TimeZone) => {
@@ -104,7 +105,7 @@ export default function Home() {
             <TouchableOpacity onPress={() => removeTimeZone(index)} style={styles.deleteButton}>
               <Text style={styles.deleteButtonText}>Delete</Text>
             </TouchableOpacity>
-            <View style={[styles.box, { backgroundColor: dynamicStyles.backgroundColor }]}>
+            <View style={[styles.box, { backgroundColor: dynamicStyles.buttonColor }]}>
               <Text style={{ ...styles.time, color: dynamicStyles.color }}>
                 {formatDate(currentTime, zone)}
               </Text>

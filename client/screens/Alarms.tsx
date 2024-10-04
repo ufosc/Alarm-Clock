@@ -77,6 +77,7 @@ export default function Alarms() {
     : textStyles.buttonText;
 
   return (
+    <View style={[styles.container, dynamicStyles]}>
     <ScrollView>
       <Text style={{ ...textStyles.titleText, padding: 20, color: dynamicStyles.color }}>
         Alarm Clock
@@ -96,5 +97,6 @@ export default function Alarms() {
 
       <StatusBar />
     </ScrollView>
+    </View>
   );
 }
