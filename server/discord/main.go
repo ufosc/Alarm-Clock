@@ -1,43 +1,25 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"log"
 	"os"
 
-	"github.com/bwmarrin/discordgo"
+	"github.com/joho/godotenv"
 )
-
-var (
-	Token	string
-)
-// Init flags
-func init() {
-	flag.StringVar(&Token, "t", "", "Bot Token")
-	flag.Parse()
-
-	if Token == "" {
-		flag.Usage()
-		os.Exit(1)
-	}
-}
 
 func main() {
-	session, _ := discordgo.New("Bot " + Token)
 
-	session.AddHandler(func(s *discordgo.Session, r *discordgo.Ready) {
-			fmt.Println("Bot online")
-	}) 
-
-	err := session.Open()
+	err := godotenv.Load()
 	if err != nil {
-		log.Fatalf("Cannot open the session: %v", err)
+		log.Fatalf("Error loading .env file")
 	}
-	defer session.Close()
-			
-	
 
+	webhook_url := os.Getenv("DISCORD_WEBHOOK")
+	if webhook_url == "" {
+		log.Fatalf("DISCORD_WEBHOOK_URL is not set in the .env file")
+	}
 
+	fmt.Println("Sending Webhook")
+	send_example_message(webhook_url)
 }
-
