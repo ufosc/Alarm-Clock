@@ -55,7 +55,6 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
       alarmTime,
       alarmName,
       days,
-      // sound, // When you've implemented sound selection
       isSnoozeEnabled,
       isActive: true,
     };
@@ -75,19 +74,14 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
     setAlarmSettingVisible(false);
   };
 
+  const dynamicStylesLocal = {
+    backgroundColor: isDarkMode ? 'darkgrey' : 'white',
+    color: isDarkMode ? 'white' : 'black',
+  };
+
   const scheduleAlarmNotification = async (alarmData: AlarmData) => {
     try {
-      const { id, alarmTime, alarmName, days, isSnoozeEnabled } = alarmData;
-
-      // Format the alarmTime as a string in 'HH:mm' format
-      const formattedAlarmTime = alarmTime.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-      });
-
-      // Extract hour and minute from the formatted alarm time
-      // const [hour, minute] = formattedAlarmTime.split(':').map(Number);
-
+      const { id, alarmTime, alarmName } = alarmData;
       const hour = alarmTime.getHours();
       const minute = alarmTime.getMinutes();
 
@@ -97,7 +91,6 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
         minute,
         repeats: true, // Repeat the notification daily if needed
       };
-      console.log('trigger: ', trigger);
 
       // Prepare notification content
       const notificationContent = {
@@ -116,7 +109,6 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
         alarmData.id = notificationID;
 
       console.log(`Notification scheduled for alarm ${notificationID}`);
-
     } catch (error) {
       console.error('Error scheduling notification:', error);
     }
@@ -125,7 +117,6 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
   const scheduleNotification = async () => {
     try {
       // Set the content and trigger for the notification
-      console.log('here');
       const notificationContent = {
         title: 'Hello!',
         body: 'This is a basic Expo notification.',
@@ -136,56 +127,66 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
       };
 
       // Schedule the notification
-      const result = await Notifications.scheduleNotificationAsync({
+      await Notifications.scheduleNotificationAsync({
         content: notificationContent,
         trigger: trigger,
       });
-
     } catch (error) {
       console.error('Error scheduling notification:', error);
     }
   };
 
   return (
-    <View style={dynamicStyles.container}>
-      <TouchableOpacity onPress={openAlarmSetting} style={styles.button}>
-        <Text style={textStyles.buttonText}>Set Alarm Time</Text>
+    <View style={[styles.container, { backgroundColor: dynamicStylesLocal.backgroundColor, padding: 20 }]}>
+      <Text style={{ ...textStyles.subtitleText, paddingBottom: 20, color: dynamicStylesLocal.color }}>
+        {isEditing ? 'Edit Alarm' : 'Add Alarm'}
+      </Text>
+
+      <TouchableOpacity onPress={openAlarmSetting} style={[styles.button, { marginBottom: 20 }]}>
+        <Text style={[textStyles.buttonText, { color: "white" }]}>Set Alarm Time</Text>
       </TouchableOpacity>
+
       <Modal
         animationType="slide"
         transparent={false}
         visible={isAlarmSettingVisible}
         onRequestClose={closeAlarmSetting}
-        style={dynamicStyles.modalContainer}
         presentationStyle='pageSheet'
       >
-        <SafeAreaView style={{ flex: 1, paddingTop: 22 }}>
-          <View style={dynamicStyles.topNavBar}>
+        <SafeAreaView style={[dynamicStyles.modalContainer, { flex: 1, padding: 20 }]}>
+          <View style={[dynamicStyles.topNavBar, { marginBottom: 20 }]}>
             <TouchableOpacity onPress={closeAlarmSetting}>
-              <Text style={dynamicStyles.topBarText}>Cancel</Text>
+              <Text style={[dynamicStyles.topBarText, { color: dynamicStylesLocal.color }]}>Cancel</Text>
             </TouchableOpacity>
-            <Text style={dynamicStyles.topBarTitle}>{isEditing ? 'Edit Alarm' : 'Add Alarm'}</Text>
+            <Text style={[dynamicStyles.topBarTitle, { color: dynamicStylesLocal.color, fontWeight: 'bold' }]}>
+              {isEditing ? 'Edit Alarm' : 'Add Alarm'}
+            </Text>
             <TouchableOpacity onPress={saveAlarm}>
-              <Text style={dynamicStyles.topBarText}>Save</Text>
+              <Text style={[dynamicStyles.topBarText, { color: dynamicStylesLocal.color }]}>Save</Text>
             </TouchableOpacity>
           </View>
 
-          {Platform.OS === 'ios' ? (
-            <TimePickerIOS alarmTime={alarmTime} setAlarmTime={setAlarmTime} />
-          ) : (
-            <TimePickerAndroid
-              isPickerVisible={isDatePickerVisible}
-              setPickerVisible={setDatePickerVisibility}
-              alarmTime={alarmTime}
-              setAlarmTime={setAlarmTime}
-            />
-          )}
+          <View style={{ marginVertical: 20 }}>
+            {Platform.OS === 'ios' ? (
+              <TimePickerIOS alarmTime={alarmTime} setAlarmTime={setAlarmTime} />
+            ) : (
+              <TimePickerAndroid
+                isPickerVisible={isDatePickerVisible}
+                setPickerVisible={setDatePickerVisibility}
+                alarmTime={alarmTime}
+                setAlarmTime={setAlarmTime}
+              />
+            )}
+          </View>
 
           <DayPicker days={days} toggleDay={toggleDay} />
           <AlarmNameInput alarmName={alarmName} setAlarmName={setAlarmName} />
           <SoundPicker /* pass any props needed */ />
           <SnoozeSwitch isSnoozeEnabled={isSnoozeEnabled} setIsSnoozeEnabled={setIsSnoozeEnabled} />
-          <Button title="Schedule Notification" onPress={scheduleNotification} />
+
+          <View style={{ marginTop: 20 }}>
+            <Button title="Schedule Notification" onPress={scheduleNotification} />
+          </View>
         </SafeAreaView>
       </Modal>
     </View>

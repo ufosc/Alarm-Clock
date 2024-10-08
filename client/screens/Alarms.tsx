@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { Switch, View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import { styles, textStyles } from '../styles';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import AlarmClock from '../components/AlarmClock';
 import AlarmCard from '../components/AlarmCard';
 import { Alarm } from '../types/AlarmTypes';
-import * as Notifications from 'expo-notifications'; // For Notifications.cancelScheduledNotificationAsync
-
-import { useDarkMode } from '../contexts/DarkModeContext'; // Import the hook
+import * as Notifications from 'expo-notifications';
+import { useDarkMode } from '../contexts/DarkModeContext';
+import { styles, textStyles } from '../styles';
 
 export default function Alarms() {
   const [alarms, setAlarms] = useState<Alarm[]>([]);
@@ -42,7 +40,6 @@ export default function Alarms() {
       // Cancel the scheduled notification for the alarm being deleted
       if (alarmToDelete && alarmToDelete.id) {
         await Notifications.cancelScheduledNotificationAsync(alarmToDelete.id);
-        console.log(`Notification for alarm ${alarmId} has been canceled.`);
       }
 
       // Filter out the alarm with the matching ID
@@ -65,34 +62,26 @@ export default function Alarms() {
     );
   };
 
-  const handleEditAlarm = (alarm: Alarm) => {
-    setSelectedAlarm(alarm);
-  };
-
-  const containerStyle = isDarkMode
-    ? styles.darkContainer
-    : { ...styles.container, ...{ marginTop: 10 } }; // Adjust as necessary for dark mode
-  const buttonTextStyle = isDarkMode
-    ? { ...textStyles.buttonText, color: 'white' }
-    : textStyles.buttonText;
-
   return (
-    <ScrollView>
-      <Text style={{ ...textStyles.titleText, padding: 20, color: dynamicStyles.color }}>
+    <ScrollView style={[styles.container, { backgroundColor: dynamicStyles.backgroundColor }]}>
+      <Text style={{ ...textStyles.titleText, padding: 0, color: dynamicStyles.color }}>
         Alarm Clock
       </Text>
 
-      <AlarmClock editingAlarm={selectedAlarm} onAlarmSave={handleSaveAlarm} />
+      <View style={{ padding: 0, backgroundColor: dynamicStyles.backgroundColor }}>
+        {/* Render the AlarmClock component for adding/editing alarms */}
+        <AlarmClock editingAlarm={selectedAlarm} onAlarmSave={handleSaveAlarm} />
 
-      {/* Render a list of AlarmCards */}
-      {alarms.map((alarm) => (
-        <AlarmCard
-          key={alarm.id}
-          alarm={alarm}
-          onToggleAlarm={handleToggleAlarm}
-          onDelete={handleDeleteAlarm}
-        />
-      ))}
+        {/* Render a list of AlarmCards */}
+        {alarms.map((alarm) => (
+          <AlarmCard
+            key={alarm.id}
+            alarm={alarm}
+            onToggleAlarm={handleToggleAlarm}
+            onDelete={handleDeleteAlarm}
+          />
+        ))}
+      </View>
 
       <StatusBar />
     </ScrollView>
