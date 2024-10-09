@@ -1,0 +1,25 @@
+name: Linter
+on: 
+  push: 
+    branch: 
+      - main
+
+jobs:
+  eslint:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: |
+          cd client
+          npm install
+      - name: Run eslint
+        run: |
+          cd client
+          npm run lint -- --fix
