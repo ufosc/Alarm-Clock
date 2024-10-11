@@ -1,3 +1,6 @@
+// Function not used, please finish implementation
+
+/* 
 import * as SMS from 'expo-sms';
 
 const sendAlarmNotification = async (phoneNumber) => {
@@ -6,3 +9,4 @@ const sendAlarmNotification = async (phoneNumber) => {
     await SMS.sendSMSAsync(phoneNumber, 'Alarm missed! Wake up!');
   }
 };
+*/
