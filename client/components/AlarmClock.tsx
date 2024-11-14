@@ -42,6 +42,7 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
   });
   const [isSnoozeEnabled, setIsSnoozeEnabled] = useState(true);
   const [isAlarmSettingVisible, setAlarmSettingVisible] = useState(false);
+  const [isAlarmSoundPickerVisible, setAlarmSoundPickerVisible] = useState(false);
   const isEditing = editingAlarm != null;
   const dynamicStyles = getDynamicStyles(isDarkMode);
 
@@ -66,12 +67,26 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
     closeAlarmSetting();
   };
 
+  const saveSoundPicker = () => {
+    // Save the sound pick that was picked somehow
+
+    closeAlarmSoundPicker();
+  }
+
   const openAlarmSetting = () => {
     setAlarmSettingVisible(true);
   };
 
   const closeAlarmSetting = () => {
     setAlarmSettingVisible(false);
+  };
+
+  const openAlarmSoundPicker = () => {
+    setAlarmSoundPickerVisible(true);
+  };
+
+  const closeAlarmSoundPicker = () => {
+    setAlarmSoundPickerVisible(false);
   };
 
   const dynamicStylesLocal = {
@@ -181,7 +196,33 @@ function AlarmClock({ onAlarmSave, editingAlarm }: AlarmClockProps) {
 
           <DayPicker days={days} toggleDay={toggleDay} />
           <AlarmNameInput alarmName={alarmName} setAlarmName={setAlarmName} />
-          <SoundPicker /* pass any props needed */ />
+          
+          <TouchableOpacity onPress={openAlarmSoundPicker} style={[styles.button, { marginTop: 20 }]}>
+            <Text style={[textStyles.buttonText, { color: "white" }]}>Select Sound</Text>
+          </TouchableOpacity>
+
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={isAlarmSoundPickerVisible}
+            onRequestClose={closeAlarmSoundPicker}
+            presentationStyle='pageSheet'
+          >
+            <SafeAreaView style={[dynamicStyles.modalContainer, { flex: 1, padding: 20 }]}>
+            <View style={[dynamicStyles.topNavBar, { marginBottom: 20 }]}>
+              <TouchableOpacity onPress={closeAlarmSoundPicker}>
+                <Text style={[dynamicStyles.topBarText, { color: dynamicStylesLocal.color }]}>Cancel</Text>
+              </TouchableOpacity>
+              <Text style={[dynamicStyles.topBarTitle, { color: dynamicStylesLocal.color, fontWeight: 'bold' }]}>
+                {isEditing ? 'Edit Sound' : 'Add Sound'}
+              </Text>
+              <TouchableOpacity onPress={saveSoundPicker}>
+                <Text style={[dynamicStyles.topBarText, { color: dynamicStylesLocal.color }]}>Save</Text>
+              </TouchableOpacity>
+            </View>
+            <SoundPicker /* pass any props needed */ />
+            </SafeAreaView>
+          </Modal>
           <SnoozeSwitch isSnoozeEnabled={isSnoozeEnabled} setIsSnoozeEnabled={setIsSnoozeEnabled} />
 
           <View style={{ marginTop: 20 }}>

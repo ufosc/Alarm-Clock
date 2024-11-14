@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, Touchable} from 'react-native';
 import { getDynamicStyles } from '../styles/AlarmStyles';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
@@ -13,15 +13,44 @@ function SoundPicker(
 
   return (
     <View style={dynamicStyles.container}>
-      <Text style={dynamicStyles.label}>Sound</Text>
-      <TouchableOpacity
-        onPress={() => {
-          /* Placeholder for sound selection functionality */
-        }}
-        style={dynamicStyles.touchable}
-      >
-        <Text style={dynamicStyles.placeholder}>Select Sound</Text>
-      </TouchableOpacity>
+      <FlatList data={[
+          {key: 'Devin'},
+          {key: 'Dan'},
+          {key: 'Dominic'},
+          {key: 'Jackson'},
+          {key: 'James'},
+          {key: 'Joel'},
+          {key: 'John'},
+          {key: 'Jillian'},
+          {key: 'Jimmy'},
+          {key: 'Julie'},
+          {key: 'Dan'},
+          {key: 'Dominic'},
+          {key: 'Jackson'},
+          {key: 'James'},
+          {key: 'Joel'},
+          {key: 'John'},
+          {key: 'Jillian'},
+          {key: 'Jimmy'},
+          {key: 'Julie'},
+          {key: 'Dan'},
+          {key: 'Dominic'},
+          {key: 'Jackson'},
+          {key: 'James'},
+          {key: 'Joel'},
+          {key: 'John'},
+          {key: 'Jillian'},
+          {key: 'Jimmy'},
+          {key: 'Julie'}
+        ]}
+        renderItem={({item}) => 
+          <TouchableOpacity onPress={() => {
+            /* Placeholder for sound selection functionality */
+          }}>
+            <Text style={dynamicStyles.textList}>{item.key}</Text>
+          </TouchableOpacity>
+      }
+      />
     </View>
   );
 }

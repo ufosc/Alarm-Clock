@@ -23,7 +23,7 @@ const DayPicker: React.FC<DayPickerProps> = ({ days, toggleDay }) => {
           style={[dynamicStyles.dayButton, days[day] && dynamicStyles.dayButtonSelected]} // Adjust as needed
         >
           <Text style={[dynamicStyles.dayText, days[day] && dynamicStyles.dayTextSelected]}>
-            {day}
+            {day.charAt(0)}
           </Text>
         </TouchableOpacity>
       ))}
