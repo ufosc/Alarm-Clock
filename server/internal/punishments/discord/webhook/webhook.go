@@ -6,6 +6,60 @@ import (
 	"github.com/gtuk/discordwebhook"
 )
 
+type DiscordWebHook struct {
+	username string
+	content  string
+
+	title       string
+	description string
+	color       string
+	imgURL      string
+}
+
+func NewDiscordWebHook(
+	username string,
+	content string,
+	title string,
+	description string,
+	color string,
+	imgURL string,
+) *DiscordWebHook {
+
+	return &DiscordWebHook{
+		username:    username,
+		content:     content,
+		title:       title,
+		description: description,
+		color:       color,
+		imgURL:      imgURL,
+	}
+
+}
+
+func (d *DiscordWebHook) SendMessage(webhookURL string) error {
+	image := discordwebhook.Image{
+		Url: &d.imgURL,
+	}
+
+	embeds := discordwebhook.Embed{
+		Title:       &d.title,
+		Description: &d.description,
+		Color:       &d.color,
+		Image:       &image,
+	}
+
+	message := discordwebhook.Message{
+		Username: &d.username,
+		Content:  &d.content,
+		Embeds:   &[]discordwebhook.Embed{embeds},
+	}
+
+	err := discordwebhook.SendMessage(webhookURL, message)
+
+	return err
+
+}
+
 func SendMessageExample(discord_webhook string) {
 	var username = "Wake Up"
 	var content = "Simple Message"
