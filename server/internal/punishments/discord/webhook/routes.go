@@ -13,13 +13,21 @@ import (
 )
 
 func RegisterRoutes(router *mux.Router) {
-	// router.HandleFunc("/discord/webhook", handleDiscordWebHook).Methods(http.MethodGet)
 	router.HandleFunc("/discord/webhook", handleDiscordWebHook).Methods(http.MethodGet)
 
 }
 
 func handleDiscordWebHook(w http.ResponseWriter, r *http.Request) {
-	// TODO: Create Webhook
+	//Create Webhook (This a JSON req object)
+	var username = "Wake Up"
+	var content = "Simple Message"
+
+	var title = "Testing Embed"
+	var description = "Embed Description."
+	var color = "383483" // Must be a numerical value not nex
+	var url2 = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXluOXlraTJzNzU1eHhqdnNta2xld3l2anA0bG0zemM1NTBiajIxYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qpCvOBBmBkble/giphy.webp"
+
+	webhookExample := NewDiscordWebHook(username, content, title, description, color, url2)
 
 	fmt.Println("Webhook activated")
 	err := godotenv.Load("../.env")
@@ -28,9 +36,9 @@ func handleDiscordWebHook(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	token := os.Getenv("DISCORD_WEBHOOK") 
+	token := os.Getenv("DISCORD_WEBHOOK")
 
-	SendMessageExample(token)
+	webhookExample.SendMessage(token)
 	utils.WriteJSON(w, http.StatusOK, "Discord Webhook sent")
 
 }
