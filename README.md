@@ -84,13 +84,13 @@ go1.23.1 download
 Navigate to the project server directory
 
 ```
-cd Alarm-Clock/server
+cd Alarm-Clock/server/cmd/app
 ```
 
 Run server
 
 ```
-go1.23.1 run ./server.go
+go1.23.1 run ./main.go
 ```
 
 ## 🤝 Contributing
