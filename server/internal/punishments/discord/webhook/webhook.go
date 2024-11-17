@@ -7,13 +7,13 @@ import (
 )
 
 type DiscordWebHook struct {
-	username string
-	content  string
+	Username string `json:"username"`
+	Content  string `json:"content"`
 
-	title       string
-	description string
-	color       string
-	imgURL      string
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Color       string `json:"color"`
+	ImgURL      string `json:"url"`
 }
 
 func NewDiscordWebHook(
@@ -26,31 +26,31 @@ func NewDiscordWebHook(
 ) *DiscordWebHook {
 
 	return &DiscordWebHook{
-		username:    username,
-		content:     content,
-		title:       title,
-		description: description,
-		color:       color,
-		imgURL:      imgURL,
+		Username:    username,
+		Content:     content,
+		Title:       title,
+		Description: description,
+		Color:       color,
+		ImgURL:      imgURL,
 	}
 
 }
 
 func (d *DiscordWebHook) SendMessage(webhookURL string) error {
 	image := discordwebhook.Image{
-		Url: &d.imgURL,
+		Url: &d.ImgURL,
 	}
 
 	embeds := discordwebhook.Embed{
-		Title:       &d.title,
-		Description: &d.description,
-		Color:       &d.color,
+		Title:       &d.Title,
+		Description: &d.Description,
+		Color:       &d.Color,
 		Image:       &image,
 	}
 
 	message := discordwebhook.Message{
-		Username: &d.username,
-		Content:  &d.content,
+		Username: &d.Username,
+		Content:  &d.Content,
 		Embeds:   &[]discordwebhook.Embed{embeds},
 	}
 
