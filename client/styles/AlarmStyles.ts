@@ -109,6 +109,7 @@ function getDynamicStyles(isDarkMode: boolean) {
     switch: {},
     deleteButton: {
       marginTop: 10,
+      fontSize: 40
     },
     deleteButtonText: {
       color: 'red',
