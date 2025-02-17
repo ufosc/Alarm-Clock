@@ -4,6 +4,8 @@ import { styles, textStyles } from '../styles';
 import { useDarkMode } from '../contexts/DarkModeContext'; // Make sure to import useDarkMode
 import SettingsToggle from '../components/SettingsToggle';
 import * as Notifications from 'expo-notifications';
+import { SafeAreaView } from 'react-native';
+
 
 function Setting() {
   useEffect(() => {
@@ -56,22 +58,32 @@ function Setting() {
 
   const { isDarkMode, toggleSwitch } = useDarkMode(); // Use the useDarkMode hook
 
-  const backgroundColor = isDarkMode ? 'darkgrey' : 'white';
+  const backgroundColor = isDarkMode ? '#1c1c1c' : '#ffffff';
+
   const textColor = isDarkMode ? 'white' : 'black';
-
   return (
-    <View style={[styles.container, { backgroundColor }]}>
-      <Text style={[textStyles.titleText, { color: textColor }]}>Settings</Text>
-
-      <SettingsToggle
-        name="Dark Mode"
-        value={isDarkMode}
-        onValueChange={toggleSwitch}
-      ></SettingsToggle>
-
-      <Button title="Schedule Notification" onPress={scheduleNotification} />
-    </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: isDarkMode ? '#1c1c1c' : '#ffffff' }}>
+      <View style={isDarkMode ? styles.darkTopBar : styles.topNavBar}>
+        <Text style={isDarkMode ? styles.darkTopBarText : styles.topBarText}>Settings</Text>
+      </View>
+      <View style={{ flex: 1, padding: 20 }}>
+        <View style={isDarkMode ? styles.darkToggleContainer : styles.container}>
+          <SettingsToggle
+            name="Dark Mode"
+            value={isDarkMode}
+            onValueChange={toggleSwitch}
+          />
+        </View>
+        <View style={{ marginTop: 20 }}>
+          <Button title="Schedule Notification" onPress={scheduleNotification} color="#007AFF" />
+        </View>
+      </View>
+    </SafeAreaView>
   );
+  
+  
+  
+    
 }
 
 export default Setting;
