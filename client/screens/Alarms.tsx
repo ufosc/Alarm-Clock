@@ -16,9 +16,10 @@ export default function Alarms() {
 
   // Define dynamic styles based on isDarkMode
   const dynamicStyles = {
-    backgroundColor: isDarkMode ? 'darkgrey' : 'white',
+    backgroundColor: isDarkMode ? '#1c1c1c' : '#ffffff',
     color: isDarkMode ? 'white' : 'black',
   };
+  
 
   // Function to handle saving alarm data
   const handleSaveAlarm = (alarmData: Alarm) => {

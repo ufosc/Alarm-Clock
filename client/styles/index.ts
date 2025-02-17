@@ -13,11 +13,52 @@ const styles = StyleSheet.create({
   },
   darkContainer: {
     flex: 1,
-    backgroundColor: '#333',
+    backgroundColor: '#1c1c1c',
     padding: 20,
-    paddingBottom: 5,
-    marginTop: 20,
+    paddingBottom: 20,
+    marginTop: 0,
+    color: '#fff',
   },
+  
+  darkText: {
+    color: '#fff',
+  },
+  darkButton: {
+    backgroundColor: '#555',
+    color: '#fff',
+  },
+ 
+  darkTabBar: {
+    backgroundColor: '#1c1c1c',
+    borderTopWidth: 0,
+    paddingBottom: 20,
+  },
+  
+  darkTopBar: {
+    backgroundColor: '#121212',
+    padding: 20,
+    paddingTop: 40,
+    borderBottomWidth: 1,
+    borderBottomColor: '#333333',
+  },
+  darkTopBarText: {
+    color: '#ffffff',
+    fontSize: 22,
+    fontWeight: 'bold',
+    letterSpacing: 1,
+  },
+  darkToggleContainer: {
+    backgroundColor: '#2a2a2a',
+    borderRadius: 12,
+    padding: 15,
+    marginTop: 15,
+    marginBottom: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+  },
+    
   button: {
     backgroundColor: 'lightgreen',
     paddingVertical: 15,
