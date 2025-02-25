@@ -23,6 +23,7 @@ The goal of the UF Alarm Clock project is to create an alarm clock that not only
 -   [UF Alarm Clock](#uf-alarm-clock)
 -   [Table of Contents](#table-of-contents)
 -   [Installation](#installation)
+-   [Known Issues](#known-issues)
 -   [Contributing](#contributing)
 -   [Resources](#resources)
 -   [Maintainers](#maintainers)
@@ -92,6 +93,22 @@ Run server
 ```
 go1.23.1 run ./main.go
 ```
+
+## Known Issues 
+
+**1. Alarm Notifications Persist After Deletion**
+
+Description: Alarm notifications continue to appear even after the alarm has been turned off or deleted. Additionally, the notification time may be inaccurate, differing by an hour from the set time compared to the device's local time.
+
+Workaround: Currently, there is no direct workaround. Users may need to restart the application to stop the unwanted notifications.
+
+Reference: [Issue #74](https://github.com/ufosc/Alarm-Clock/issues/74)
+
+**2. (similar) Alarms Continue After Server Shutdown**
+
+Description: Alarms set within the app continue to notify the user even when the local development server is not running.
+
+Workaround: To disable these alarms, restart the local development server and remove the alarms from within the app.
 
 ## 🤝 Contributing
 
